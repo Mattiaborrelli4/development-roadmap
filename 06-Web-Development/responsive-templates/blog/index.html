@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog di tecnologia e sviluppo web">
+    <title>TechBlog | Articoli su Sviluppo Web e Tecnologia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <a href="#" class="logo">Tech<span class="accent">Blog</span></a>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link active">Home</a></li>
+                        <li><a href="#" class="nav-link">Articoli</a></li>
+                        <li><a href="#" class="nav-link">Tutorial</a></li>
+                        <li><a href="#" class="nav-link">Risorse</a></li>
+                        <li><a href="#" class="nav-link">Chi Sono</a></li>
+                    </ul>
+                </nav>
+                <button class="search-btn" aria-label="Cerca">🔍</button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Post -->
+    <section class="featured">
+        <div class="container">
+            <article class="featured-post">
+                <div class="featured-image">
+                    <div class="image-placeholder">Featured Image</div>
+                </div>
+                <div class="featured-content">
+                    <span class="category">JavaScript</span>
+                    <h1>Le Novità di ECMAScript 2024: C'è da Sapere</h1>
+                    <p class="featured-excerpt">Scopri tutte le nuove funzionalità introdotte in ECMAScript 2024, dai nuovi metodi di Array alle miglioramenti alle espressioni regolari.</p>
+                    <div class="post-meta">
+                        <span class="author">👤 Mario Rossi</span>
+                        <span class="date">📅 15 Gennaio 2024</span>
+                        <span class="read-time">⏱️ 8 min lettura</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Leggi Articolo Completo</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Blog Posts -->
+                <section class="posts-section">
+                    <h2 class="section-title">Ultimi Articoli</h2>
+
+                    <article class="post-card featured-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">React</div>
+                        </div>
+                        <div class="post-content">
+                            <span class="category">React</span>
+                            <h3><a href="#">Server Components in React 19: Guida Completa</a></h3>
+                            <p class="post-excerpt">I Server Components stanno cambiando il modo in cui costruiamo applicazioni React. Scopri come funzionano e quando usarli.</p>
+                            <div class="post-meta">
+                                <span>12 Gennaio 2024</span>
+                                <span>6 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">CSS</div>
+                        </div>
+                        <div class="post-content">
+                            <span class="category">CSS</span>
+                            <h3><a href="#">CSS Grid vs Flexbox: Quando Usare Cosa</a></h3>
+                            <p class="post-excerpt">Una guida pratica per scegliere tra Grid e Flexbox nei tuoi progetti, con esempi concreti e best practices.</p>
+                            <div class="post-meta">
+                                <span>10 Gennaio 2024</span>
+                                <span>5 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">TypeScript</div>
+                        </div>
+                        <div class="post-content">
+                            <span class="category">TypeScript</span>
+                            <h3><a href="#">TypeScript 5.3: Tutte le Novità</a></h3>
+                            <p class="post-excerpt">Analisi dettagliata delle nuove feature introdotte in TypeScript 5.3, da import attributes a miglioramenti alle performance.</p>
+                            <div class="post-meta">
+                                <span>8 Gennaio 2024</span>
+                                <span>7 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">Performance</div>
+                        </div>
+                        <div class="post-content">
+                            <span class="category">Performance</span>
+                            <h3><a href="#">Ottimizzazione delle Performance Web nel 2024</a></h3>
+                            <p class="post-excerpt">Strategie e tecniche per migliorare le performance del tuo sito web, dal lazy loading alle Core Web Vitals.</p>
+                            <div class="post-meta">
+                                <span>5 Gennaio 2024</span>
+                                <span>10 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">Node.js</div>
+                        </div>
+                        <div class="post-content">
+                            <span class="category">Node.js</span>
+                            <h3><a href="#">Costruire API RESTful con Node.js e Express</a></h3>
+                            <p class="post-excerpt">Una guida completa per creare API RESTful robuste e scalabili usando Node.js, Express e MongoDB.</p>
+                            <div class="post-meta">
+                                <span>3 Gennaio 2024</span>
+                                <span>12 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">Accessibility</div>
+                        </div>
+                        <div class="post-content">
+                            <span class="category">Accessibilità</span>
+                            <h3><a href="#">Web Accessibility: Guida per Sviluppatori</a></h3>
+                            <p class="post-excerpt">Come rendere il tuo sito accessibile a tutti: dalle basi dell'HTML alle tecniche avanzate di ARIA.</p>
+                            <div class="post-meta">
+                                <span>1 Gennaio 2024</span>
+                                <span>9 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Pagination -->
+                    <nav class="pagination">
+                        <a href="#" class="pagination-link active">1</a>
+                        <a href="#" class="pagination-link">2</a>
+                        <a href="#" class="pagination-link">3</a>
+                        <a href="#" class="pagination-link">4</a>
+                        <a href="#" class="pagination-link next">→</a>
+                    </nav>
+                </section>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- About Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">Chi Sono</h3>
+                        <div class="widget-about">
+                            <div class="author-avatar">
+                                <div class="image-placeholder small">Avatar</div>
+                            </div>
+                            <p>Ciao! Sono Mario Rossi, sviluppatore web e tech writer. Condivido le mie conoscenze su sviluppo web, JavaScript e nuove tecnologie.</p>
+                            <a href="#" class="btn-link">Scopri di più →</a>
+                        </div>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">Categorie</h3>
+                        <ul class="categories-list">
+                            <li><a href="#"><span class="cat-name">JavaScript</span><span class="cat-count">24</span></a></li>
+                            <li><a href="#"><span class="cat-name">React</span><span class="cat-count">18</span></a></li>
+                            <li><a href="#"><span class="cat-name">CSS</span><span class="cat-count">15</span></a></li>
+                            <li><a href="#"><span class="cat-name">TypeScript</span><span class="cat-count">12</span></a></li>
+                            <li><a href="#"><span class="cat-name">Node.js</span><span class="cat-count">10</span></a></li>
+                            <li><a href="#"><span class="cat-name">Performance</span><span class="cat-count">8</span></a></li>
+                            <li><a href="#"><span class="cat-name">Accessibilità</span><span class="cat-count">6</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter Widget -->
+                    <div class="widget newsletter-widget">
+                        <h3 class="widget-title">Newsletter</h3>
+                        <p>Iscriviti per ricevere gli ultimi articoli direttamente nella tua casella email.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Il tuo indirizzo email" required>
+                            <button type="submit" class="btn btn-primary">Iscriviti</button>
+                        </form>
+                        <p class="newsletter-note">Niente spam, mi disiscrivi quando vuoi.</p>
+                    </div>
+
+                    <!-- Popular Posts Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">Articoli Popolari</h3>
+                        <div class="popular-posts">
+                            <a href="#" class="popular-post">
+                                <span class="post-number">01</span>
+                                <div class="popular-post-content">
+                                    <h4>Guida Completa a React Hooks</h4>
+                                    <span>15 min lettura</span>
+                                </div>
+                            </a>
+                            <a href="#" class="popular-post">
+                                <span class="post-number">02</span>
+                                <div class="popular-post-content">
+                                    <h4>CSS Moderno: Grid e Flexbox</h4>
+                                    <span>12 min lettura</span>
+                                </div>
+                            </a>
+                            <a href="#" class="popular-post">
+                                <span class="post-number">03</span>
+                                <div class="popular-post-content">
+                                    <h4>JavaScript Asincrono Masterclass</h4>
+                                    <span>20 min lettura</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">Tag</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="tag">JavaScript</a>
+                            <a href="#" class="tag">React</a>
+                            <a href="#" class="tag">CSS</a>
+                            <a href="#" class="tag">TypeScript</a>
+                            <a href="#" class="tag">Node.js</a>
+                            <a href="#" class="tag">HTML</a>
+                            <a href="#" class="tag">API</a>
+                            <a href="#" class="tag">Git</a>
+                            <a href="#" class="tag">Webpack</a>
+                            <a href="#" class="tag">Performance</a>
+                            <a href="#" class="tag">A11y</a>
+                            <a href="#" class="tag">Testing</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechBlog</h3>
+                    <p>Blog di tecnologia e sviluppo web con articoli, tutorial e risorse per sviluppatori.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="GitHub">🐙</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Link Rapidi</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Articoli</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">Chi Sono</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">React</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">Node.js</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><a href="mailto:info@techblog.it">info@techblog.it</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Termini di Servizio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechBlog. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+
+        // Newsletter Form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Grazie per l\'iscrizione alla newsletter!');
+            newsletterForm.reset();
+        });
+    </script>
+</body>
+</html>

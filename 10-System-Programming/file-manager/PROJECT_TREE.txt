@@ -1,0 +1,189 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                         📁 FILE MANAGER PROJECT                              ║
+║                      Sistema di Gestione File in C                           ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📂 C:\Users\matti\Desktop\Project Ideas Portfolio\10-System-Programming\file-manager
+│
+├── 📄 file_manager.c  ◄───────────────────────┐
+│   └── 402 righe                              │  CODICE SORGENTE
+│   └── 14.4 KB                                │  - System call POSIX
+│                                              │  - File operations
+│   Funzioni principali:                       │  - Interactive menu
+│   ├─ list_files()                            │  - Error handling
+│   ├─ copy_file()                             │  - ANSI colors
+│   ├─ move_file()
+│   ├─ delete_file()
+│   ├─ show_file_info()
+│   └─ main()                                  │
+│                                              │
+├── 🔧 Makefile  ◄────────────────────────────┤
+│   └── 69 righe                               │  BUILD AUTOMATION
+│   └── 1.7 KB                                 │
+│                                              │  Target disponibili:
+│   Target:                                    │  - make         (compila)
+│   ├─ all                                     │  - make run     (esegui)
+│   ├─ run                                     │  - make clean   (pulisci)
+│   ├─ clean                                   │  - make install (installa)
+│   ├─ install                                 │  - make help    (aiuto)
+│   └─ uninstall                              │
+│                                              │
+├── 🚀 build.sh  ◄────────────────────────────┤
+│   └── 50 righe                               │  BUILD SCRIPT
+│   └── 1.8 KB                                 │
+│                                              │  Script bash per:
+│   Funzioni:                                  │  - Verifica gcc
+│   ├─ Verifica gcc                            │  - Compila
+│   ├─ Compila                                 │  - Esegue opzionale
+│   └─ Esegue                                  │
+│                                              │
+├── 📖 README.md  ◄───────────────────────────┤
+│   └── 350 righe                              │  DOCUMENTAZIONE
+│   └── 8.9 KB                                 │
+│                                              │  Contiene:
+│   Sezioni:                                   │  - Descrizione
+│   ├─ Introduzione                            │  - Installazione
+│   ├─ Caratteristiche                         │  - Utilizzo
+│   ├─ Installazione                           │  - Esempi
+│   ├─ Utilizzo                                │  - Troubleshooting
+│   ├─ Funzionalità tecniche                  │  - Architettura
+│   ├─ Troubleshooting                         │  - Espansioni
+│   ├─ Espansioni future                       │
+│   └─ Note di sviluppo                        │
+│                                              │
+├── 🏗️ ARCHITETTURA.md  ◄────────────────────┤
+│   └── 249 righe                              │  DOCUMENTAZIONE TECNICA
+│   └── 9.8 KB                                 │
+│                                              │  Contiene:
+│   Sezioni:                                   │  - Diagrammi moduli
+│   ├─ Diagramma dei moduli                    │  - Struttura codice
+│   ├─ Struttura del codice                    │  - Flow chart
+│   ├─ Flow chart operazioni                   │  - System call table
+│   ├─ Tabella system call                     │  - Design patterns
+│   ├─ Design patterns                         │  - Ottimizzazioni
+│   ├─ Ottimizzazioni                          │  - Complessità
+│   └─ Complessità algoritmica                 │
+│                                              │
+├── ⚡ QUICKSTART.md  ◄────────────────────────┤
+│   └── 121 righe                              │  GUIDA RAPIDA
+│   └── 2.7 KB                                 │
+│                                              │  Contiene:
+│   Sezioni:                                   │  - Avvio veloce
+│   ├─ Avvio veloce                            │  - Comandi menu
+│   ├─ Comandi del menu                        │  - Esempi pratici
+│   ├─ Esempi pratici                          │  - Troubleshooting
+│   ├─ Troubleshooting                         │  - Note importanti
+│   ├─ Note importanti                         │
+│   └─ Concetti chiave                         │
+│                                              │
+├── 📝 PROGETTO.md  ◄─────────────────────────┤
+│   └── 297 righe                              │  PANORAMICA PROGETTO
+│   └── 9.8 KB                                 │
+│                                              │  Contiene:
+│   Sezioni:                                   │  - Struttura completa
+│   ├─ Obiettivo del progetto                  │  - Funzionalità
+│   ├─ Struttura completa                      │  - Stack tecnologico
+│   ├─ Funzionalità implementate               │  - Statistiche
+│   ├─ Stack tecnologico                       │  - System programming
+│   ├─ Statistiche del codice                  │  - Espansioni
+│   ├─ Concetti dimostrati                     │  - Checklist
+│   ├─ Ciclo di sviluppo                       │
+│   ├─ Complessità                             │
+│   ├─ Punti di forza                          │
+│   ├─ Espansioni future                       │
+│   └─ Checklist                               │
+│                                              │
+├── 📄 test_sample.txt  ◄─────────────────────┤
+│   └── File di test                           │  FILE DI ESEMPI0
+│   └── 540 B                                  │
+│                                              │  Usato per:
+│   Contenuto:                                 │  - Test copia
+│   ├─ Descrizione progetto                    │  - Test spostamento
+│   ├─ Funzionalità                            │  - Test info
+│   └─ Istruzioni                              │  - Test eliminazione
+│                                              │
+├── 🚫 .gitignore  ◄──────────────────────────┤
+│   └── File da ignorare                       │  GIT CONFIG
+│                                              │
+│   Ignora:                                   │  File:
+│   ├─ File compilati                          │  - *.o
+│   ├─ Backup                                  │  - *.exe
+│   ├─ Temporanei                              │  - *.out
+│   └─ Test files                              │  - DSYM/
+│                                              │
+└── 📄 PROJECT_TREE.txt (questo file)          │  STRUTTURA VISIVA
+   └── Rappresentazione ad albero              │
+                                              │
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         📊 STATISTICHE PROGETTO                               ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  📁 File totali:           10                                                 ║
+║  📄 Righe di codice:       1,538                                              ║
+║  💾 Dimensione totale:     ~50 KB                                             ║
+║                                                                              ║
+║  🔧 Codice C:              402 righe (14.4 KB)                               ║
+║  📖 Documentazione:         1,017 righe (31.2 KB)                             ║
+║  🚀 Build system:           119 righe (3.5 KB)                               ║
+║                                                                              ║
+║  📦 Funzioni implementate:  6                                                 ║
+║  🛠️ System call utilizzate: 6                                                 ║
+║  📋 Target Makefile:        7                                                 ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         🚀 QUICK START                                       ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  1. Compila il progetto:                                                       ║
+║     $ make                                                                    ║
+║     oppure                                                                    ║
+║     $ ./build.sh                                                              ║
+║                                                                              ║
+║  2. Esegui il programma:                                                      ║
+║     $ ./file_manager                                                          ║
+║                                                                              ║
+║  3. Segui il menu interattivo                                                 ║
+║                                                                              ║
+║  4. Testa con il file test_sample.txt                                         ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         📚 DOCUMENTAZIONE                                     ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  📖 README.md           - Documentazione completa e dettagliata              ║
+║  ⚡ QUICKSTART.md       - Guida rapida per iniziare subito                    ║
+║  🏗️ ARCHITETTURA.md     - Dettagli tecnici e diagrammi                       ║
+║  📝 PROGETTO.md         - Panoramica completa del progetto                    ║
+║  🌳 PROJECT_TREE.txt    - Questa struttura ad albero                         ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         ✨ CARATTERISTICHE                                     ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  ✅ Codice C completo e funzionante                                           ║
+║  ✅ System call POSIX (opendir, stat, rename, unlink)                         ║
+║  ✅ Interfaccia interattiva con colori ANSI                                    ║
+║  ✅ Gestione errori robusta                                                   ║
+║  ✅ Makefile con target multipli                                              ║
+║  ✅ Script di build alternativo                                               ║
+║  ✅ Documentazione completa in italiano                                       ║
+║  ✅ Esempi e guida rapida                                                     ║
+║  ✅ File di test incluso                                                      ║
+║  ✅ .gitignore configurato                                                    ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+                              🎉 PROGETTO COMPLETATO! 🎉
+
+                         Creato per: Portfolio Project Ideas
+                         Categoria: System Programming
+                         Linguaggio: C + POSIX
+                         Data: Febbraio 2026

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e1e1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Calcolatrice">
+    <title>Calcolatrice PWA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon-192.png">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Calcolatrice</h1>
+        </header>
+
+        <div class="calculator">
+            <!-- Display -->
+            <div class="display">
+                <div class="display-previous" id="previousOperand"></div>
+                <div class="display-current" id="currentOperand">0</div>
+            </div>
+
+            <!-- Buttons Grid -->
+            <div class="buttons-grid">
+                <!-- Row 1 -->
+                <button class="button button-function" data-action="clear">C</button>
+                <button class="button button-function" data-action="backspace">⌫</button>
+                <button class="button button-function" data-action="percent">%</button>
+                <button class="button button-operator" data-action="operator" data-value="÷">÷</button>
+
+                <!-- Row 2 -->
+                <button class="button button-number" data-action="number" data-value="7">7</button>
+                <button class="button button-number" data-action="number" data-value="8">8</button>
+                <button class="button button-number" data-action="number" data-value="9">9</button>
+                <button class="button button-operator" data-action="operator" data-value="×">×</button>
+
+                <!-- Row 3 -->
+                <button class="button button-number" data-action="number" data-value="4">4</button>
+                <button class="button button-number" data-action="number" data-value="5">5</button>
+                <button class="button button-number" data-action="number" data-value="6">6</button>
+                <button class="button button-operator" data-action="operator" data-value="-">−</button>
+
+                <!-- Row 4 -->
+                <button class="button button-number" data-action="number" data-value="1">1</button>
+                <button class="button button-number" data-action="number" data-value="2">2</button>
+                <button class="button button-number" data-action="number" data-value="3">3</button>
+                <button class="button button-operator" data-action="operator" data-value="+">+</button>
+
+                <!-- Row 5 -->
+                <button class="button button-number" data-action="negate">+/−</button>
+                <button class="button button-number" data-action="number" data-value="0">0</button>
+                <button class="button button-number" data-action="decimal">,</button>
+                <button class="button button-equals" data-action="equals">=</button>
+            </div>
+        </div>
+
+        <!-- PWA Install Prompt -->
+        <div id="installPrompt" class="install-prompt hidden">
+            <p>Installa questa app per un'esperienza migliore!</p>
+            <button id="installButton" class="install-button">Installa</button>
+            <button id="dismissButton" class="dismiss-button">Non ora</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

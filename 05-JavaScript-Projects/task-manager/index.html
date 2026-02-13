@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Gestione Attività</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Task Manager</h1>
+            <p class="subtitle">Gestisci le tue attività in modo semplice ed efficace</p>
+        </header>
+
+        <!-- Statistiche -->
+        <section class="statistics">
+            <div class="stat-card">
+                <span class="stat-label">Totale</span>
+                <span class="stat-value" id="stat-total">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Attive</span>
+                <span class="stat-value" id="stat-active">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Completate</span>
+                <span class="stat-value" id="stat-completed">0</span>
+            </div>
+        </section>
+
+        <!-- Form Aggiungi Task -->
+        <section class="task-form">
+            <h2>Aggiungi Nuova Attività</h2>
+            <form id="add-task-form">
+                <div class="form-group">
+                    <label for="task-title">Titolo *</label>
+                    <input type="text" id="task-title" placeholder="Inserisci il titolo dell'attività" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Descrizione</label>
+                    <textarea id="task-description" rows="3" placeholder="Aggiungi una descrizione (opzionale)"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-category">Categoria</label>
+                        <select id="task-category">
+                            <option value="lavoro">💼 Lavoro</option>
+                            <option value="personale">👤 Personale</option>
+                            <option value="studio">📚 Studio</option>
+                            <option value="salute">💪 Salute</option>
+                            <option value="altro">📌 Altro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-priority">Priorità</label>
+                        <select id="task-priority">
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media" selected>🟡 Media</option>
+                            <option value="bassa">🟢 Bassa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-due-date">Scadenza</label>
+                        <input type="date" id="task-due-date">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <span>➕</span> Aggiungi Attività
+                </button>
+            </form>
+        </section>
+
+        <!-- Filtri e Ordinamento -->
+        <section class="filters">
+            <div class="filter-group">
+                <label>Filtra per stato:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tutte</button>
+                    <button class="filter-btn" data-filter="active">Attive</button>
+                    <button class="filter-btn" data-filter="completed">Completate</button>
+                </div>
+            </div>
+
+            <div class="sort-group">
+                <label for="sort-select">Ordina per:</label>
+                <select id="sort-select">
+                    <option value="date">📅 Data</option>
+                    <option value="priority">⚡ Priorità</option>
+                    <option value="title">🔤 Titolo</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Lista Task -->
+        <section class="tasks-section">
+            <div class="tasks-header">
+                <h2>Le Mie Attività</h2>
+                <button id="clear-completed" class="btn btn-secondary">
+                    🗑️ Rimuovi Completate
+                </button>
+            </div>
+            <div id="tasks-list" class="tasks-list">
+                <p class="empty-state">Nessuna attività presente. Aggiungine una nuova!</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Modifica Task -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Modifica Attività</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="edit-task-form">
+                <input type="hidden" id="edit-task-id">
+
+                <div class="form-group">
+                    <label for="edit-title">Titolo *</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-description">Descrizione</label>
+                    <textarea id="edit-description" rows="3"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-category">Categoria</label>
+                        <select id="edit-category">
+                            <option value="lavoro">💼 Lavoro</option>
+                            <option value="personale">👤 Personale</option>
+                            <option value="studio">📚 Studio</option>
+                            <option value="salute">💪 Salute</option>
+                            <option value="altro">📌 Altro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-priority">Priorità</label>
+                        <select id="edit-priority">
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media">🟡 Media</option>
+                            <option value="bassa">🟢 Bassa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-due-date">Scadenza</label>
+                        <input type="date" id="edit-due-date">
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary cancel-edit">Annulla</button>
+                    <button type="submit" class="btn btn-primary">💾 Salva Modifiche</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

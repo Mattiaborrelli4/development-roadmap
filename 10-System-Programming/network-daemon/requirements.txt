@@ -1,0 +1,12 @@
+# Dipendenze per Echo Daemon
+# ===========================
+
+# Parsing configurazione YAML
+pyyaml>=6.0
+
+# Nota: Tutte le altre dipendenze sono moduli standard Python:
+# - socket (networking)
+# - signal (signal handling)
+# - multiprocessing (concorrenza)
+# - logging (log su file)
+# - os, sys (system calls)

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Meteo - Previsioni del Tempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Dashboard Meteo</h1>
+            <p class="subtitle">Previsioni del tempo in tempo reale</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Inserisci il nome della città..."
+                    autocomplete="off"
+                >
+                <button id="searchBtn" class="btn-primary">
+                    🔍 Cerca
+                </button>
+            </div>
+            <button id="locationBtn" class="btn-secondary" title="Usa la tua posizione">
+                📍 La mia posizione
+            </button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Caricamento...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden"></div>
+
+        <!-- Weather Display -->
+        <div id="weatherDisplay" class="weather-display hidden">
+            <!-- Current Weather -->
+            <section class="current-weather">
+                <div class="weather-header">
+                    <h2 id="cityName">--</h2>
+                    <p id="dateTime" class="date-time">--</p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temperature-section">
+                        <img id="weatherIcon" src="" alt="Icona meteo" class="weather-icon">
+                        <div class="temp-container">
+                            <span id="temperature" class="temperature">--°</span>
+                            <span id="feelsLike" class="feels-like">Percepite: --°</span>
+                        </div>
+                    </div>
+                    <div class="weather-description">
+                        <p id="description" class="description">--</p>
+                        <p id="humidity" class="info">💧 Umidità: --%</p>
+                        <p id="wind" class="info">💨 Vento: -- km/h</p>
+                        <p id="pressure" class="info">🔵 Pressione: -- hPa</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Temperature Chart -->
+            <section class="chart-section">
+                <h3>📊 Grafico Temperature (24h)</h3>
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast -->
+            <section class="forecast-section">
+                <h3>📅 Previsioni 5 Giorni</h3>
+                <div id="forecast" class="forecast-grid">
+                    <!-- Forecast cards will be inserted here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Dati forniti da <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a></p>
+            <p class="footer-note">⚠️ Per utilizzare questa dashboard, inserisci la tua API key di OpenWeatherMap nel file weather.js</p>
+        </footer>
+    </div>
+
+    <script src="weather.js"></script>
+</body>
+</html>

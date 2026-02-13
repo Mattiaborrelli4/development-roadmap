@@ -1,0 +1,9 @@
+click>=8.1.0
+rich>=13.0.0
+dnspython>=2.3.0
+python-whois>=0.8.0
+pyyaml>=6.0
+validators>=0.20.0
+tldextract>=3.4.0
+urlextract>=1.8.0
+email-validator>=2.0.0

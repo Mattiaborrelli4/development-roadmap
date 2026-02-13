@@ -1,0 +1,142 @@
+╔════════════════════════════════════════════════════════════════════╗
+║                        MINI VIM                                     ║
+║                   Editor di Testo Modale                            ║
+╚════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                         ARCHITETTURA                               │
+└─────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────────┐
+    │   editor.c       │  ───►  Loop Principale
+    │                  │        Gestione I/O
+    │  - editor_init() │        Render Schermo
+    │  - editor_run()  │        Gestione Comandi
+    │  - editor_draw() │
+    └────────┬─────────┘
+             │
+             │ usa
+             ▼
+    ┌──────────────────┐
+    │   buffer.c       │  ───►  Gestione Dati
+    │                  │        Buffer Dinamico
+    │  - insert_char() │        Movimento Cursore
+    │  - delete_char() │        I/O File
+    │  - load_file()   │
+    │  - save_file()   │
+    └──────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                         FLUSSI DATI                                 │
+└─────────────────────────────────────────────────────────────────────┘
+
+    Tastiera ──► getch() ──► editor_handle_*()
+                                      │
+                                      ▼
+                               Buffer (memoria)
+                                      │
+                                      ▼
+    stdout ─◄─ editor_draw() ─◄─ Buffer
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                      STATI EDITOR                                   │
+└─────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────┐   i    ┌──────────┐   ESC  ┌──────────┐
+    │ NORMAL   │════════►│ INSERT   │══════►│ NORMAL   │
+    │          │          │          │        │          │
+    │ h,j,k,l │          │ type     │        │          │
+    │ naviga  │          │ text     │        │          │
+    └────┬─────┘          └──────────┘        └────┬─────┘
+         │                                          │
+         │ :                                        │ :
+         ▼                                          ▼
+    ┌──────────┐                              ┌──────────┐
+    │ COMMAND │                              │ COMMAND  │
+    │          │                              │          │
+    │ :w :q    │                              │ :w :q    │
+    │ :wq :e   │                              │ :wq :e   │
+    └──────────┘                              └──────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                      STRUTTURA BUFFER                                │
+└─────────────────────────────────────────────────────────────────────┘
+
+    struct Buffer {
+        char **lines;          ───► ["Riga 0\0"
+        size_t line_count;           "Riga 1\0"
+        size_t line_capacity;        "Riga 2\0"
+        size_t cursor_x;             ...     ]
+        size_t cursor_y;
+        int modified;
+        char *filename;
+    }
+
+    lines[cursor_y][cursor_x] ───► Posizione corrente cursore
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    FILES PROGETTO                                   │
+└─────────────────────────────────────────────────────────────────────┘
+
+    Sorgente:
+    ├─ buffer.h        (2.0 KB)   ◄────┐
+    ├─ buffer.c        (7.7 KB)        │ Modulo Buffer
+    │                                  │
+    └─ editor.c        (12 KB)    ◄────┘ Modulo Editor
+
+    Build:
+    ├─ Makefile        (2.0 KB)
+    ├─ build.bat       (1.6 KB)
+    ├─ build.sh        (1.5 KB)
+    └─ cleanup.bat     (308 B)
+
+    Documentazione:
+    ├─ README.md       (5.3 KB)
+    ├─ QUICKSTART.md   (3.1 KB)
+    └─ PROGETTO.md     (4.4 KB)
+
+    Altro:
+    ├─ .gitignore      (459 B)
+    ├─ example.txt     (650 B)
+    │
+    └─ Eseguibile:
+       └─ mini-vim.exe (67 KB)  ◄── PRONTO!
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    COMANDI PRINCIPALI                               │
+└─────────────────────────────────────────────────────────────────────┘
+
+    NORMAL Mode:
+    ┌───┬──────────────────┐
+    │ h │ Sinistra         │
+    │ j │ Giù              │
+    │ k │ Su               │
+    │ l │ Destra           │
+    │ i │ INSERT mode      │
+    │ : │ COMMAND mode     │
+    └───┴──────────────────┘
+
+    INSERT Mode:
+    ┌─────────┬─────────────┐
+    │ testo   │ Scrivi      │
+    │ BKSP    │ Cancella    │
+    │ ENTER   │ Nuova riga  │
+    │ ESC     │ NORMAL mode │
+    └─────────┴─────────────┘
+
+    COMMAND Mode:
+    ┌─────────┬──────────────────┐
+    │ :w      │ Salva            │
+    │ :w file │ Salva come       │
+    │ :q      │ Esci             │
+    │ :wq     │ Salva & esci     │
+    │ :e file │ Carica file      │
+    └─────────┴──────────────────┘
+
+╔════════════════════════════════════════════════════════════════════╗
+║  TOTALE: ~600 righe di codice C                                   ║
+║  DIMENSIONE: 67 KB eseguibile                                      ║
+║  LINGUAGGIO: C99                                                   ║
+║  PIATTAFORMA: Windows/Linux                                        ║
+║  STATO: COMPLETATO E FUNZIONALE                                    ║
+╚════════════════════════════════════════════════════════════════════╝

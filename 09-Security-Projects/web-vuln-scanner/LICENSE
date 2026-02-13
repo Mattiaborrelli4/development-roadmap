@@ -1,0 +1,44 @@
+MIT License
+
+Copyright (c) 2024 Web Vulnerability Scanner Project
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+1. EDUCATIONAL AND DEFENSIVE USE ONLY
+   The Software is intended SOLELY for educational purposes and defensive
+   security testing. Users must have explicit permission to test any target
+   system.
+
+2. NO UNAUTHORIZED USE
+   Users shall NOT use the Software to test systems they do not own or have
+   explicit written permission to test. Unauthorized security testing is
+   illegal in many jurisdictions.
+
+3. RESPONSIBLE USE
+   Users are solely responsible for ensuring their use of the Software
+   complies with all applicable laws and regulations in their jurisdiction.
+
+4. NO LIABILITY FOR MISUSE
+   The authors and copyright holders shall NOT be liable for any damages
+   arising from misuse or unauthorized use of the Software.
+
+5. RESPONSIBLE DISCLOSURE
+   Any vulnerabilities discovered using the Software should be reported
+   responsibly to the appropriate parties in accordance with responsible
+   disclosure practices.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+BY USING THIS SOFTWARE, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND
+AGREE TO BE BOUND BY THESE TERMS AND CONDITIONS.

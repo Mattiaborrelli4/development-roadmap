@@ -1,0 +1,46 @@
+# Compiled executables
+*.exe
+*.out
+*.app
+database_engine
+database_engine.exe
+
+# Object files
+*.o
+*.obj
+
+# Database files
+*.db
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# Build directories
+build/
+bin/
+debug/
+release/
+
+# IDE
+.vscode/
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.suo
+*.user
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

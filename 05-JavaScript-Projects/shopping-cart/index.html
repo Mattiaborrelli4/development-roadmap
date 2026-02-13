@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrello della Spesa - JavaScript Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          TechShop
+        </h1>
+        <button class="cart-toggle" id="cart-toggle" aria-label="Apri carrello">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count hidden" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <!-- Products Section -->
+      <section class="products-section">
+        <h2 class="section-title">I Nostri Prodotti</h2>
+        <div class="products-grid" id="products-grid">
+          <!-- Products will be rendered here -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>Carrello</h2>
+      <button class="close-cart" id="close-cart" aria-label="Chiudi carrello">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <!-- Cart items will be rendered here -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span>Totale</span>
+          <span class="cart-total" id="cart-total">€0,00</span>
+        </div>
+      </div>
+      <button class="checkout-btn" id="checkout-btn" disabled>
+        Procedi al Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Cart Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Notification -->
+  <div class="notification" id="notification"></div>
+
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Completa il tuo Ordine</h2>
+        <button class="close-modal" id="close-modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form class="checkout-form" id="checkout-form">
+        <div class="form-group">
+          <label for="name">Nome Completo *</label>
+          <input type="text" id="name" name="name" required>
+          <span class="error-message" id="error-name"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+          <span class="error-message" id="error-email"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Indirizzo *</label>
+          <input type="text" id="address" name="address" required>
+          <span class="error-message" id="error-address"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">Città *</label>
+            <input type="text" id="city" name="city" required>
+            <span class="error-message" id="error-city"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="zip">CAP *</label>
+            <input type="text" id="zip" name="zip" maxlength="5" required>
+            <span class="error-message" id="error-zip"></span>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Riepilogo Ordine</h3>
+          <div id="checkout-items"></div>
+          <div class="checkout-total">
+            <span>Totale:</span>
+            <span id="checkout-total-amount"></span>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-order-btn">
+          Conferma Ordine
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal" id="success-modal">
+    <div class="modal-content success-modal-content">
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h2>Ordine Confermato!</h2>
+      <p>Grazie per il tuo acquisto.</p>
+      <p class="order-number">Numero ordine: <strong id="order-id"></strong></p>
+      <p class="order-email">Riceverai una conferma all'indirizzo <strong id="order-email"></strong></p>
+      <button class="continue-shopping-btn" id="continue-shopping">
+        Continua lo Shopping
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

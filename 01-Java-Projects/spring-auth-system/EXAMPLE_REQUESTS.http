@@ -1,0 +1,66 @@
+### Spring Boot Authentication System - Esempi di Richieste HTTP
+
+### 1. Registrazione Utente
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "mrossi",
+  "email": "mario.rossi@example.com",
+  "password": "password123",
+  "firstName": "Mario",
+  "lastName": "Rossi",
+  "phoneNumber": "+39123456789"
+}
+
+### 2. Login
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "mrossi",
+  "password": "password123"
+}
+
+### 3. Login con Email
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "mario.rossi@example.com",
+  "password": "password123"
+}
+
+### 4. Refresh Token
+POST http://localhost:8080/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "inserisci-qui-il-refresh-token"
+}
+
+### 5. Get Current User (Protetto)
+GET http://localhost:8080/api/users/me
+Authorization: Bearer inserisci-qui-l-access-token
+
+### 6. Update Profile (Protetto)
+PUT http://localhost:8080/api/users/me
+Authorization: Bearer inserisci-qui-l-access-token
+Content-Type: application/json
+
+{
+  "firstName": "Mario Giovanni",
+  "lastName": "Rossi",
+  "phoneNumber": "+39987654321",
+  "email": "mario.rossi@newmail.com"
+}
+
+### 7. Logout
+POST http://localhost:8080/api/auth/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "inserisci-qui-il-refresh-token"
+}
+
+### NOTA: Sostituisci i token con quelli ricevuti dalle risposte precedenti

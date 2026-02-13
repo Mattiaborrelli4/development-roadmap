@@ -1,0 +1,52 @@
+# Makefile per Test Suite Mini Shell
+
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -pedantic
+LDFLAGS =
+
+# File
+SRC = shell.c test_shell.c
+HDR = shell.h
+OBJ = shell.o test_shell.o
+TEST_TARGET = test_shell
+
+# Sistema operativo
+ifeq ($(OS),Windows_NT)
+    RM = del /Q
+    TEST_EXT = .exe
+else
+    RM = rm -f
+    TEST_EXT =
+endif
+
+TEST_FULL = $(TEST_TARGET)$(TEST_EXT)
+
+# Regole
+all: $(TEST_FULL)
+
+$(TEST_FULL): $(OBJ)
+	$(CC) $(OBJ) -o $(TEST_FULL) $(LDFLAGS)
+	@echo "Test suite compilata: $(TEST_FULL)"
+
+%.o: %.c $(HDR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Esegui i test
+test: $(TEST_FULL)
+	@echo "Esecuzione test suite..."
+	./$(TEST_FULL)
+
+# Pulizia
+clean:
+	$(RM) $(OBJ) $(TEST_FULL) *.stackdump 2>NUL || true
+
+help:
+	@echo "Makefile Test Suite"
+	@echo ""
+	@echo "Targets:"
+	@echo "  make        - Compila la test suite"
+	@echo "  make test   - Compila ed esegue i test"
+	@echo "  make clean  - Rimuove i file oggetto"
+	@echo "  make help   - Mostra questo messaggio"
+
+.PHONY: all test clean help

@@ -1,0 +1,126 @@
+# Process Manager - File di Configurazione
+# Questo file contiene le impostazioni per il Process Manager
+
+# Impostazioni di visualizzazione
+display:
+  # Formato data/ora
+  datetime_format: "%Y-%m-%d %H:%M:%S"
+
+  # Larghezza colonne (caratteri)
+  column_widths:
+    pid: 8
+    name: 25
+    cpu: 8
+    memory: 10
+    status: 10
+
+  # Mostra processi per pagina (0 = illimitato)
+  page_size: 50
+
+# Impostazioni di refresh
+refresh:
+  # Intervallo di refresh in secondi (modalità watch)
+  interval_seconds: 2
+
+  # Numero di refresh prima di fermare (0 = infinito)
+  max_iterations: 0
+
+# Impostazioni di ordinamento
+sorting:
+  # Campo di ordinamento default
+  default_field: "cpu"  # cpu, memory, pid, name, threads
+
+  # Direzione default
+  default_reverse: true  # true = decrescente
+
+# Impostazioni di colorazione
+colors:
+  # Abilita colori ANSI
+  enabled: true
+
+  # Soglie per colorazione CPU (percentuale)
+  cpu_thresholds:
+    low: 5.0      # Verde
+    medium: 20.0  # Giallo
+    high: 50.0    # Rosso
+
+  # Soglie per colorazione memoria (MB)
+  memory_thresholds:
+    low: 100     # Verde
+    medium: 500  # Giallo
+    high: 1000   # Rosso
+
+  # Codici colori ANSI
+  ansi:
+    reset: "\033[0m"
+    bright: "\033[1m"
+    dim: "\033[2m"
+    green: "\033[32m"
+    yellow: "\033[33m"
+    red: "\033[31m"
+    blue: "\033[34m"
+    magenta: "\033[35m"
+    cyan: "\033[36m"
+    white: "\033[37m"
+
+# Filtri
+filters:
+  # Nascondi processi di kernel
+  hide_kernel: false
+
+  # Nascondi processi zombie
+  hide_zombies: false
+
+  # Mostra solo processi dell'utente corrente
+  user_only: false
+
+# Sicurezza
+safety:
+  # Richiedi conferma prima di terminare processi
+  require_confirmation: true
+
+  # Avvisa prima di terminare processi di sistema
+  warn_system_processes: true
+
+  # PID protetti (non terminabili senza --force)
+  protected_pids:
+    - 1     # init/systemd
+    - 2     # kthreadd
+    - 10    # Tipicamente processi critici
+
+  # Nomi di processi protetti
+  protected_names:
+    - "init"
+    - "systemd"
+    - "kernel"
+    - "kthreadd"
+
+# Logging
+logging:
+  # Abilita logging debug
+  debug: false
+
+  # File di log (vuoto = stdout)
+  log_file: ""
+
+  # Livello di log: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+
+# Process Tree
+tree:
+  # Usa caratteri Unicode per l'albero
+  unicode: true
+
+  # Profondità massima di visualizzazione
+  max_depth: -1  # -1 = illimitata
+
+# Altre opzioni
+misc:
+  # Cache informazioni processo (ms)
+  cache_duration: 1000
+
+  # Timeout per le operazioni (secondi)
+  operation_timeout: 5
+
+  # Numero massimo di processi da mostrare
+  max_processes: 0  # 0 = illimitato

@@ -1,0 +1,19 @@
+{
+  "cities": [
+    "Milan",
+    "Rome",
+    "Naples"
+  ],
+  "check_interval": 3600,
+  "alerts": {
+    "temp_high": 35,
+    "temp_low": 0,
+    "conditions": [
+      "Rain",
+      "Snow",
+      "Thunderstorm",
+      "Extreme"
+    ]
+  },
+  "units": "metric"
+}

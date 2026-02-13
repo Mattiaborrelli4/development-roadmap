@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App - Messaggistica in Tempo Reale</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Benvenuto nella Chat</h2>
+            <p>Inserisci il tuo username per iniziare</p>
+            <form id="loginForm">
+                <input
+                    type="text"
+                    id="usernameInput"
+                    placeholder="Il tuo username..."
+                    maxlength="20"
+                    required
+                    autocomplete="off"
+                >
+                <button type="submit">Entra nella Chat</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Chat Container -->
+    <div id="chatContainer" class="chat-container hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">
+                    <span id="userAvatar">?</span>
+                </div>
+                <div class="user-info">
+                    <h3 id="currentUsername">Utente</h3>
+                    <div class="status">
+                        <span class="status-dot online"></span>
+                        <span>Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-rooms">
+                <h3>Stanze</h3>
+                <ul class="room-list">
+                    <li class="room-item active" data-room="generale">
+                        <span class="room-icon">#</span>
+                        <span class="room-name">Generale</span>
+                        <span class="room-badge" id="badge-generale">0</span>
+                    </li>
+                    <li class="room-item" data-room="tecnologia">
+                        <span class="room-icon">#</span>
+                        <span class="room-name">Tecnologia</span>
+                        <span class="room-badge" id="badge-tecnologia">0</span>
+                    </li>
+                    <li class="room-item" data-room="musica">
+                        <span class="room-icon">#</span>
+                        <span class="room-name">Musica</span>
+                        <span class="room-badge" id="badge-musica">0</span>
+                    </li>
+                    <li class="room-item" data-room="giochi">
+                        <span class="room-icon">#</span>
+                        <span class="room-name">Giochi</span>
+                        <span class="room-badge" id="badge-giochi">0</span>
+                    </li>
+                    <li class="room-item" data-room="off-topic">
+                        <span class="room-icon">#</span>
+                        <span class="room-name">Off-Topic</span>
+                        <span class="room-badge" id="badge-off-topic">0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="online-users">
+                <h3>Utenti Online</h3>
+                <ul class="users-list" id="onlineUsers">
+                    <!-- Users will be populated dynamically -->
+                </ul>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <span>Esci</span>
+            </button>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <div class="header-info">
+                    <span class="hashtag">#</span>
+                    <h2 id="currentRoom">generale</h2>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="clearHistory" title="Cronologia">
+                        <span>🗑️</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be populated dynamically -->
+                <div class="welcome-message">
+                    <h3>Benvenuto nella stanza <span id="welcomeRoom">#generale</span>!</h3>
+                    <p>Questa è un'applicazione di chat simulata con persistenza locale.</p>
+                    <p>I messaggi vengono salvati nel tuo browser e restano disponibili anche dopo la chiusura.</p>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <form class="message-form" id="messageForm">
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Scrivi un messaggio..."
+                    autocomplete="off"
+                    maxlength="500"
+                >
+                <button type="submit" class="send-btn" id="sendBtn">
+                    <span>Invia</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+# Esempio di Sessione con Mini Database Engine
+
+## Sessione Completa di Test
+
+```
+╔════════════════════════════════════════╗
+║     Mini Database Engine v1.0          ║
+║     Database Key-Value in C            ║
+╚════════════════════════════════════════╝
+
+Caricamento database da: database.db
+File non trovato, creazione nuovo database
+
+=== Mini Database Engine - Comandi ===
+  SET <chiave> <valore>    - Salva o aggiorna un valore
+  GET <chiave>              - Recupera un valore
+  DELETE <chiave>           - Rimuove una chiave
+  LIST                      - Mostra tutti i record
+  SAVE [filename]           - Salva su file (default: database.db)
+  LOAD [filename]           - Carica da file (default: database.db)
+  INFO                      - Mostra informazioni sul database
+  HELP                      - Mostra questo messaggio
+  CLEAR                     - Pulisce lo schermo
+  EXIT / QUIT               - Esce dal programma
+====================================
+
+db> SET nome "Mario Rossi"
+OK: Chiave 'nome' impostata
+
+db> SET eta 30
+OK: Chiave 'eta' impostata
+
+db> SET citta "Roma"
+OK: Chiave 'citta' impostata
+
+db> SET professione "Sviluppatore"
+OK: Chiave 'professione' impostata
+
+db> SET email "mario.rossi@example.com"
+OK: Chiave 'email' impostata
+
+db> GET nome
+Valore: Mario Rossi
+
+db> GET eta
+Valore: 30
+
+db> GET telefono
+Chiave 'telefono' non trovata
+
+db> LIST
+
+=== Database (5 record) ===
+Chiave               Valore                         Timestamp
+-----               -----                         ---------
+nome                Mario Rossi                    2026-02-12 10:30:15
+eta                 30                             2026-02-12 10:30:18
+citta               Roma                           2026-02-12 10:30:21
+professione         Sviluppatore                   2026-02-12 10:30:25
+email               mario.rossi@example.com        2026-02-12 10:30:28
+===========================
+
+db> INFO
+
+=== Info Database ===
+Record totali: 5
+Dimensione tabella: 1024
+Carico: 0.49%
+======================
+
+db> DELETE email
+OK: Chiave 'email' eliminata
+
+db> GET email
+Chiave 'email' non trovata
+
+db> LIST
+
+=== Database (4 record) ===
+Chiave               Valore                         Timestamp
+-----               -----                         ---------
+nome                Mario Rossi                    2026-02-12 10:30:15
+eta                 30                             2026-02-12 10:30:18
+citta               Roma                           2026-02-12 10:30:21
+professione         Sviluppatore                   2026-02-12 10:30:25
+===========================
+
+db> SAVE backup.db
+Database salvato con successo: 4 record in 'backup.db'
+
+db> SAVE
+Database salvato con successo: 4 record in 'database.db'
+
+db> EXIT
+
+Salvataggio automatico in corso...
+Database salvato con successo: 4 record in 'database.db'
+Arrivederci!
+```
+
+## Seconda Sessione (Caricamento Database)
+
+```
+╔════════════════════════════════════════╗
+║     Mini Database Engine v1.0          ║
+║     Database Key-Value in C            ║
+╚════════════════════════════════════════╝
+
+Caricamento database da: database.db
+Database caricato con successo: 4 record da 'database.db'
+
+=== Mini Database Engine - Comandi ===
+  SET <chiave> <valore>    - Salva o aggiorna un valore
+  GET <chiave>              - Recupera un valore
+  DELETE <chiave>           - Rimuove una chiave
+  LIST                      - Mostra tutti i record
+  SAVE [filename]           - Salva su file (default: database.db)
+  LOAD [filename]           - Carica da file (default: database.db)
+  INFO                      - Mostra informazioni sul database
+  HELP                      - Mostra questo messaggio
+  CLEAR                     - Pulisce lo schermo
+  EXIT / QUIT               - Esce dal programma
+====================================
+
+db> LIST
+
+=== Database (4 record) ===
+Chiave               Valore                         Timestamp
+-----               -----                         ---------
+nome                Mario Rossi                    2026-02-12 10:30:15
+eta                 30                             2026-02-12 10:30:18
+citta               Roma                           2026-02-12 10:30:21
+professione         Sviluppatore                   2026-02-12 10:30:25
+===========================
+
+db> SET eta 31
+OK: Chiave 'eta' impostata
+
+db> GET eta
+Valore: 31
+
+db> EXIT
+
+Salvataggio automatico in corso...
+Database salvato con successo: 4 record in 'database.db'
+Arrivederci!
+```
+
+## Comandi Utili per Testing
+
+```bash
+# Compila
+make
+
+# Esegue e carica database specifico
+./minidb test.db
+
+# Pulisce tutto
+make clean
+
+# Resetta solo il database
+make reset-db
+```
+
+## Scenari di Test
+
+### Test 1: Inserimento Massivo
+```
+db> SET key1 value1
+db> SET key2 value2
+db> SET key3 value3
+...
+db> SET key100 value100
+db> INFO
+```
+
+### Test 2: Aggiornamento Record
+```
+db> SET colore rosso
+db> GET colore
+db> SET colore blu
+db> GET colore
+```
+
+### Test 3: Chiavi Non Esistenti
+```
+db> GET chiave_inesistente
+db> DELETE chiave_inesistente
+```
+
+### Test 4: Salvataggio Multiplo
+```
+db> SET a 1
+db> SAVE a.db
+db> SET b 2
+db> SAVE b.db
+db> DELETE a
+db> LOAD a.db
+db> LIST
+```

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Server C++</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 HTTP Server C++</h1>
+            <p class="subtitle">Server HTTP Multi-threaded in C++17</p>
+        </header>
+
+        <main>
+            <section class="features">
+                <h2>✨ Caratteristiche</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>🔌 Socket TCP</h3>
+                        <p>Comunicazione tramite socket TCP/IP su porta 8080</p>
+                    </div>
+                    <div class="card">
+                        <h3>📡 HTTP/1.1</h3>
+                        <p>Protocollo HTTP/1.1 con parsing delle richieste</p>
+                    </div>
+                    <div class="card">
+                        <h3>🧵 Multi-threading</h3>
+                        <p>Thread pool per gestire richieste concorrenti</p>
+                    </div>
+                    <div class="card">
+                        <h3>📁 File Statici</h3>
+                        <p>Serving di file statici con Content-Type corretto</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tech-stack">
+                <h2>⚙️ Stack Tecnologico</h2>
+                <ul>
+                    <li><strong>Linguaggio:</strong> C++17</li>
+                    <li><strong>Socket:</strong> Winsock2 (Windows) / sys/socket.h (Linux)</li>
+                    <li><strong>Threading:</strong> std::thread + ThreadPool</li>
+                    <li><strong>Sincronizzazione:</strong> std::mutex + condition_variable</li>
+                    <li><strong>I/O File:</strong> std::ifstream (binary mode)</li>
+                </ul>
+            </section>
+
+            <section class="status-codes">
+                <h2>📊 Status Codes Supportati</h2>
+                <div class="status-grid">
+                    <div class="status-card success">
+                        <span class="status-code">200</span>
+                        <span class="status-text">OK</span>
+                    </div>
+                    <div class="status-card error">
+                        <span class="status-code">404</span>
+                        <span class="status-text">Not Found</span>
+                    </div>
+                    <div class="status-card warning">
+                        <span class="status-code">500</span>
+                        <span class="status-text">Server Error</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-types">
+                <h2>📄 Content-Type Supportati</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estensione</th>
+                            <th>MIME Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>.html, .htm</td><td>text/html</td></tr>
+                        <tr><td>.css</td><td>text/css</td></tr>
+                        <tr><td>.js</td><td>application/javascript</td></tr>
+                        <tr><td>.json</td><td>application/json</td></tr>
+                        <tr><td>.png</td><td>image/png</td></tr>
+                        <tr><td>.jpg, .jpeg</td><td>image/jpeg</td></tr>
+                        <tr><td>.gif</td><td>image/gif</td></tr>
+                        <tr><td>.svg</td><td>image/svg+xml</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer>
+            <p>Progetto dimostrativo - Socket TCP + HTTP Protocol + Multi-threading</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

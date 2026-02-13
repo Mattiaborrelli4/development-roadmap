@@ -1,0 +1,163 @@
+# Phishing Detection Patterns
+# File educativo per il riconoscimento delle email di phishing
+
+phishing_keywords:
+  urgency:
+    - "urgente"
+    - "immediatamente"
+    - "entro 24 ore"
+    - "scade tra"
+    - "azione richiesta"
+    - "ora o mai più"
+    - "ultimo avviso"
+    - "verrà chiuso"
+    - "sarà sospeso"
+    - "account verrà bloccato"
+    - "atto immediato"
+    - "non perdere"
+
+  pressure_tactics:
+    - "attenzione"
+    - "avviso legale"
+    - "notifica importante"
+    - "confermare l'identità"
+    - "verificare il conto"
+    - "sicurezza del conto"
+    - "attività sospette"
+    - "accesso non autorizzato"
+    - "tentativi di accesso"
+    - "violazione della sicurezza"
+
+  financial_indicators:
+    - "bonifico"
+    - "pagamento"
+    - "fattura"
+    - "transazione"
+    - "refund"
+    - "rimborso"
+    - "carta di credito"
+    - "conto bancario"
+    - "IBAN"
+    - "SWIFT"
+    - "credito"
+    - "addebito"
+
+  credential_harvesting:
+    - "password"
+    - "conferma password"
+    - "aggiorna password"
+    - "cambia password"
+    - "credenziali"
+    - "login"
+    - "accedi"
+    - "sign in"
+    - "log in"
+    - "autenticazione"
+    - "verifica identità"
+
+suspicious_tlds:
+  - .xyz
+  - .top
+  - .zip
+  - .mov
+  - .tk
+  - .ml
+  - .ga
+  - .cf
+  - .gq
+  - .cc
+  - .pw
+
+legitimate_domains:
+  - paypal.com
+  - amazon.com
+  - ebay.com
+  - apple.com
+  - microsoft.com
+  - google.com
+  - facebook.com
+  - netflix.com
+  - bancoposta.it
+  - poste.it
+  - intesa.it
+  - unicredit.it
+  - bancamediolu m.it
+  - ing.it
+  - fineco.it
+  - paypal.com
+
+brand_keywords:
+  paypal:
+    - "PayPal"
+    - "paypal"
+    - "PAYPAL"
+  amazon:
+    - "Amazon"
+    - "amazon"
+    - "AMAZON"
+  apple:
+    - "Apple"
+    - "apple"
+    - "iCloud"
+    - "iTunes"
+  microsoft:
+    - "Microsoft"
+    - "microsoft"
+    - "Outlook"
+    - "Office 365"
+  bank:
+    - "Banca"
+    - "Poste Italiane"
+    - "Carta di credito"
+    - "Conto corrente"
+
+explanation_messages:
+  spf:
+    pass: "✓ SPF valido: Il server è autorizzato a inviare email per questo dominio"
+    fail: "✗ SPF fallito: Il server NON è autorizzato a inviare email per questo dominio"
+    none: "⚠ SPF non configurato: Il dominio non ha record SPF"
+    softfail: "⚠ SPF softfail: Il server potrebbe non essere autorizzato"
+
+  dmarc:
+    pass: "✓ DMARC valido: Policy di autenticazione forte presente"
+    fail: "✗ DMARC fallito: Autenticazione non conforme alla policy"
+    none: "⚠ DMARC non configurato: Il dominio non ha policy DMARC"
+    quarantine: "⚠ DMARC quarantine: Le email sospette verranno marcate"
+    reject: "✓ DMARC reject: Le email non autenticate verranno rifiutate"
+
+  dkim:
+    valid: "✓ DKIM valido: La email è firmata digitalmente e non è stata modificata"
+    invalid: "✗ DKIM non valido: La firma digitale è invalida o la email è stata modificata"
+    missing: "⚠ DKIM assente: La email non è firmata digitalmente"
+
+  https:
+    secure: "✓ HTTPS: Il sito utilizza connessione sicura"
+    not_secure: "✗ HTTP: Il sito NON utilizza una connessione sicura"
+
+  ip_address:
+    suspicious: "✗ Indirizzo IP: L'URL utilizza un indirizzo IP invece di un nome a dominio"
+
+  shortened_url:
+    suspicious: "⚠ URL accorciato: Impossibile verificare la destinazione reale"
+
+  misspelled_domain:
+    suspicious: "✗ Dominio con refuso: Il nome del dominio sembra simile a uno noto ma è errato (typosquatting)"
+
+  urgency_detected:
+    warning: "⚠ Tattica di urgenza: Il cerca di spingerti ad agire rapidamente senza riflettere"
+
+  credential_request:
+    warning: "⚠ Richiesta credenziali: Legittimo le aziende NON chiedono MAI la password via email"
+
+  attachment:
+    warning: "⚠ Allegato sospetto: Le email di phishing spesso contengono allegati dannosi"
+
+educational_tips:
+  - "Verifica SEMPRE l'indirizzo del mittente, non solo il nome visualizzato"
+  - "Passa il mouse sui link senza cliccare per vedere l'URL reale"
+  - "Le aziende serie non chiedono MAI password o dati sensibili via email"
+  - "Diffida delle email che creano un falso senso di urgenza"
+  - "Verifica le comunicazioni ufficiali tramite il sito web dell'azienda o telefono"
+  - "Attiva l'autenticazione a due fattori dove possibile"
+  - "Mantieni il software e l'antivirus aggiornati"
+  - "Segnala sempre le email sospette al tuo provider email"

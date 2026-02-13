@@ -1,0 +1,13 @@
+# Caesar Cipher Tool - Dipendenze
+
+# Output CLI colorato e formattato
+rich>=13.0.0
+
+# Librerie standard usate:
+# - pathlib (gestione percorsi)
+# - collections (Counter per frequenze)
+# - math (funzioni matematiche)
+# - argparse (CLI)
+# - sys (system)
+#
+# Nessuna dipendenza esterna oltre a 'rich' richiesto!

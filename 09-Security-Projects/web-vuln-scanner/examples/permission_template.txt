@@ -1,0 +1,151 @@
+# PERMISSION TEMPLATE
+# Fill out this form and keep it on file before scanning any target
+
+================================================================================
+AUTHORIZATION TO SCAN WEB APPLICATION
+================================================================================
+
+I, ______________________________________________________________________,
+(Your Full Name)
+
+ residing at ______________________________________________________________,
+(Address)
+
+acting in my capacity as ___________________________________________________,
+(Job Title)
+
+ for ______________________________________________________________________,
+(Company/Organization Name)
+
+ hereby grant explicit permission to conduct a security vulnerability scan
+ of the following web application(s):
+
+================================================================================
+TARGET INFORMATION
+================================================================================
+
+Target URL: _________________________________________________________________
+
+Target Owner: ______________________________________________________________
+
+Contact Person: ____________________________________________________________
+
+Contact Email: ______________________________________________________________
+
+Contact Phone: ______________________________________________________________
+
+================================================================================
+SCAN DETAILS
+================================================================================
+
+Scan Type: [ ] Vulnerability Assessment  [ ] Penetration Testing
+          [ ] Configuration Review      [ ] Other: _________________
+
+Expected Start Date: _________________________________________________________
+
+Expected End Date: __________________________________________________________
+
+Scope: [ ] Specific Pages/URLs Listed Below
+      [ ] Entire Application
+      [ ] Other: ________________________________________________________
+
+Exclusions (What NOT to scan):
+  _________________________________________________________________________
+  _________________________________________________________________________
+  _________________________________________________________________________
+
+================================================================================
+AUTHORIZED TESTING ACTIVITIES
+================================================================================
+
+[ ] SQL Injection Testing
+[ ] Cross-Site Scripting (XSS) Testing
+[ ] Authentication Testing
+[ ] Configuration Review
+[ ] Header Analysis
+[ ] Information Disclosure Testing
+[ ] Other (specify): ____________________________________________________
+
+Tools to be Used: Web Vulnerability Scanner (Educational Security Tool)
+
+================================================================================
+LIMITATIONS AND CONDITIONS
+================================================================================
+
+I understand and agree that:
+
+1. Testing will be conducted during the specified dates only
+2. Testing methods are limited to those specified above
+3. No data will be modified, deleted, or destroyed (read-only testing)
+4. All findings will be kept confidential
+5. Findings will be reported only to authorized personnel
+6. Testing will be stopped immediately upon request
+7. All exclusions specified above will be respected
+8. Rate limiting will be used to avoid disruption
+9. This authorization may be revoked at any time
+
+================================================================================
+LIABILITY AND RESPONSIBILITY
+================================================================================
+
+I understand that:
+
+1. I am solely responsible for this authorization
+2. The scanner operator is not liable for any damages
+3. Testing may reveal vulnerabilities in my systems
+4. I should have proper backups before testing
+5. Testing should be conducted in a test environment when possible
+6. Production testing requires additional precautions
+
+I accept full responsibility for granting this authorization and for any
+consequences that may result from the authorized testing activities.
+
+================================================================================
+SIGNATURE
+================================================================================
+
+By signing below, I certify that I have the authority to grant this permission
+and that I understand and agree to all terms stated above.
+
+______________________________
+Authorized Signature
+
+______________________________
+Printed Name
+
+______________________________
+Title
+
+______________________________
+Date (DD/MM/YYYY)
+
+================================================================================
+CONTACT FOR QUESTIONS
+================================================================================
+
+If you have any questions about this authorization or the testing activities,
+please contact:
+
+Name: _____________________________________________________________________
+
+Email: ____________________________________________________________________
+
+Phone: ____________________________________________________________________
+
+================================================================================
+FOR SCANNER OPERATOR
+================================================================================
+
+Before scanning, verify:
+
+[ ] Authorization form is complete and signed
+[ ] Target URL matches authorization
+[ ] Date is within authorized period
+[ ] Scope matches authorization
+[ ] Exclusions are noted
+[ ] Contact information is current
+[ ] You have legal authority to conduct this scan
+
+Keep this form on file for at least 2 years after the scan.
+
+================================================================================

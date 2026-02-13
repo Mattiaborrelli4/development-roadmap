@@ -1,0 +1,11 @@
+# Log Analyzer - Requirements
+# Dipendenze Python per il progetto
+
+# Opzionale ma raccomandato per colored output
+colorama>=0.4.6
+
+# Per configurazione YAML
+pyyaml>=6.0
+
+# Note: Il progetto funziona anche senza queste dipendenze,
+# ma con funzionalità ridotte (nessun color, nessuna config YAML)

@@ -1,0 +1,5 @@
+1,Mario,Rossi,20,Informatica,28.5
+2,Laura,Bianchi,21,Matematica,29.0
+3,Giuseppe,Verdi,22,Fisica,27.5
+4,Anna,Ferrari,19,Chimica,30.0
+5,Marco,Colombo,23,Ingegneria,26.5

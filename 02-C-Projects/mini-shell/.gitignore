@@ -1,0 +1,29 @@
+# File oggetto
+*.o
+*.obj
+
+# Eseguibili
+mini-shell
+mini-shell.exe
+*.exe
+*.out
+
+# File history
+.mini_shell_history
+
+# File di debug
+*.stackdump
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# File temporanei
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Log files
+*.log

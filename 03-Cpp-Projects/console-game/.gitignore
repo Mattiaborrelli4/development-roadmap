@@ -1,0 +1,55 @@
+# ============================================================================
+# .gitignore per Snake Game C++
+# ============================================================================
+
+# Eseguibili compilati
+*.exe
+*.out
+*.app
+snake
+snake.exe
+
+# File oggetto
+*.o
+*.obj
+*.ko
+
+# File di dipendenze
+*.d
+
+# File generati dal compilatore
+*.pdb
+*.ilk
+*.exp
+
+# Directory di build
+build/
+bin/
+obj/
+debug/
+release/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+# VS Code
+.vscode/
+
+# IDE vari
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Log file
+*.log
+
+# File temporanei
+*.tmp
+*.bak
+*.cache

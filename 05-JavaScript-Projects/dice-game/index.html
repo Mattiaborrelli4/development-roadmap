@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioco dei Dadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 Gioco dei Dadi 🎲</h1>
+
+        <div class="game-info">
+            <div class="winning-score">
+                <label>Punti per vincere:</label>
+                <select id="winning-score">
+                    <option value="50">50</option>
+                    <option value="100" selected>100</option>
+                    <option value="150">150</option>
+                    <option value="200">200</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="players-container">
+            <!-- Giocatore 1 -->
+            <div class="player-panel" id="player-0">
+                <h2 class="player-name">Giocatore 1</h2>
+                <div class="score-box">
+                    <span class="score-label">PUNTEGGIO TOTALE</span>
+                    <span class="score" id="score-0">0</span>
+                </div>
+                <div class="current-box">
+                    <span class="current-label">PUNTEGGIO CORRENTE</span>
+                    <span class="current-score" id="current-0">0</span>
+                </div>
+                <div class="player-indicator active" id="indicator-0"></div>
+            </div>
+
+            <!-- Area del dado -->
+            <div class="dice-container">
+                <div class="dice" id="dice">
+                    <div class="dice-face" data-face="1">
+                        <span class="dot"></span>
+                    </div>
+                    <div class="dice-face" data-face="2">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="dice-face" data-face="3">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="dice-face" data-face="4">
+                        <div class="column">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="column">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <div class="dice-face" data-face="5">
+                        <div class="column">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="column">
+                            <span class="dot"></span>
+                        </div>
+                        <div class="column">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <div class="dice-face" data-face="6">
+                        <div class="column">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="column">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dice-result" id="dice-result">-</div>
+            </div>
+
+            <!-- Giocatore 2 -->
+            <div class="player-panel" id="player-1">
+                <h2 class="player-name">Giocatore 2</h2>
+                <div class="score-box">
+                    <span class="score-label">PUNTEGGIO TOTALE</span>
+                    <span class="score" id="score-1">0</span>
+                </div>
+                <div class="current-box">
+                    <span class="current-label">PUNTEGGIO CORRENTE</span>
+                    <span class="current-score" id="current-1">0</span>
+                </div>
+                <div class="player-indicator" id="indicator-1"></div>
+            </div>
+        </div>
+
+        <!-- Controlli del gioco -->
+        <div class="controls">
+            <button class="btn btn-new" id="btn-new">Nuova Partita</button>
+            <button class="btn btn-roll" id="btn-roll">Lancia il Dado 🎲</button>
+            <button class="btn btn-hold" id="btn-hold">Tieni il Punteggio</button>
+        </div>
+
+        <!-- Messaggi di gioco -->
+        <div class="game-message" id="game-message">
+            Premi "Lancia il Dado" per iniziare!
+        </div>
+    </div>
+
+    <!-- Overlay di vittoria -->
+    <div class="overlay" id="overlay">
+        <div class="modal">
+            <h2 id="winner-text">Giocatore 1 vince!</h2>
+            <p class="final-score">Punteggio finale: <span id="final-score">0</span></p>
+            <button class="btn btn-play-again" id="btn-play-again">Gioca Ancora</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

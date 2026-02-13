@@ -1,0 +1,22 @@
+# Security Audit Tool - Dipendenze Python
+# Versione 1.0.0 - Strumento Educativo/Difensivo
+
+# Core dependencies
+PyYAML>=6.0
+Jinja2>=3.1.0
+Click>=8.1.0
+colorama>=0.4.6
+rich>=13.0.0
+
+# AST parsing
+ast-decompiler>=0.7.0
+
+# Pattern matching
+regex>=2023.0.0
+
+# Report generation
+reportlab>=4.0.0
+
+# Testing (opzionale per sviluppo)
+pytest>=7.4.0
+pytest-cov>=4.1.0

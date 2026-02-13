@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Analitica - Visualizzazione Dati</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>📊 Dashboard Analitica</h1>
+            <p class="subtitle">Visualizzazione Interattiva dei Dati</p>
+        </header>
+
+        <!-- Filtri -->
+        <div class="filters-section">
+            <h2>Filtri Dati</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-period="week">Ultima Settimana</button>
+                <button class="filter-btn" data-period="month">Ultimo Mese</button>
+                <button class="filter-btn" data-period="quarter">Ultimo Trimestre</button>
+                <button class="filter-btn" data-period="year">Ultimo Anno</button>
+            </div>
+            <div class="category-filters">
+                <label>
+                    <input type="checkbox" checked class="category-filter" value="vendite">
+                    Vendite
+                </label>
+                <label>
+                    <input type="checkbox" checked class="category-filter" value="utenti">
+                    Utenti
+                </label>
+                <label>
+                    <input type="checkbox" checked class="category-filter" value="entrate">
+                    Entrate
+                </label>
+            </div>
+        </div>
+
+        <!-- Statistiche -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <h3>Totale Entrate</h3>
+                    <p class="stat-value" id="totalRevenue">€0</p>
+                    <p class="stat-change positive">+12.5%</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-content">
+                    <h3>Utenti Attivi</h3>
+                    <p class="stat-value" id="activeUsers">0</p>
+                    <p class="stat-change positive">+8.3%</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🛒</div>
+                <div class="stat-content">
+                    <h3>Vendite Totali</h3>
+                    <p class="stat-value" id="totalSales">0</p>
+                    <p class="stat-change negative">-2.1%</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-content">
+                    <h3>Tasso Conversione</h3>
+                    <p class="stat-value" id="conversionRate">0%</p>
+                    <p class="stat-change positive">+5.7%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grafici -->
+        <div class="charts-grid">
+            <!-- Grafico Linea - Trend Vendite -->
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <h3>Trend Vendite e Entrate</h3>
+                    <select class="chart-type-select" data-chart="lineChart">
+                        <option value="line">Linea</option>
+                        <option value="bar">Barre</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Grafico Barre - Vendite per Categoria -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Vendite per Categoria</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Grafico Torta - Distribuzione Utenti -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Distribuzione Utenti</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Grafico Barre Orizzontali - Performance Prodotto -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Performance Prodotti</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="horizontalBarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Grafico Radar - Metriche Mensili -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Metriche Performance</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabella Dati -->
+        <div class="data-table-section">
+            <h3>Dati Dettagliati</h3>
+            <div class="table-container">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Periodo</th>
+                            <th>Vendite</th>
+                            <th>Entrate</th>
+                            <th>Utenti</th>
+                            <th>Tasso Conversione</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>© 2024 Dashboard Analitica - Aggiornato in tempo reale</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

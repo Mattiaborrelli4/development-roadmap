@@ -1,0 +1,4 @@
+.checkout-page-wrapper {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Sfida la tua Conoscenza</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="quiz-header">
+                <h1><i class="fas fa-brain"></i> Quiz App</h1>
+                <p class="subtitle">Sfida la tua conoscenza!</p>
+            </div>
+
+            <div class="category-selection">
+                <h2>Scegli una Categoria</h2>
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+
+            <div class="difficulty-selection">
+                <h2>Scegli la Difficoltà</h2>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn" data-difficulty="easy">
+                        <i class="fas fa-smile"></i> Facile
+                    </button>
+                    <button class="difficulty-btn" data-difficulty="medium">
+                        <i class="fas fa-meh"></i> Medio
+                    </button>
+                    <button class="difficulty-btn" data-difficulty="hard">
+                        <i class="fas fa-grimace"></i> Difficile
+                    </button>
+                </div>
+            </div>
+
+            <div class="start-actions">
+                <button id="start-quiz-btn" class="btn btn-primary" disabled>
+                    <i class="fas fa-play"></i> Inizia il Quiz
+                </button>
+            </div>
+
+            <div class="high-scores-preview">
+                <h3><i class="fas fa-trophy"></i> Migliori Punteggi</h3>
+                <div id="high-scores-list" class="high-scores-list">
+                    <!-- High scores will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span id="question-counter">Domanda 1/10</span>
+                </div>
+                <div class="quiz-info">
+                    <span id="category-display" class="category-badge"></span>
+                    <span id="score-display" class="score-badge">
+                        <i class="fas fa-star"></i> <span id="current-score">0</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="timer-container">
+                <div class="timer-bar">
+                    <div class="timer-fill" id="timer-fill"></div>
+                </div>
+                <div class="timer-display">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-display">15</span>s
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text" class="question-text"></h2>
+                <div id="answers-container" class="answers-container">
+                    <!-- Answers will be loaded here -->
+                </div>
+            </div>
+
+            <div class="quiz-actions">
+                <button id="next-question-btn" class="btn btn-secondary" style="display: none;">
+                    Prossima Domanda <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div class="results-container">
+                <div class="results-header">
+                    <i class="fas fa-flag-checkered"></i>
+                    <h1>Quiz Completato!</h1>
+                </div>
+
+                <div class="score-summary">
+                    <div class="final-score">
+                        <span id="final-score">0</span>
+                        <p>Punteggio Finale</p>
+                    </div>
+                    <div class="score-details">
+                        <div class="detail-item">
+                            <i class="fas fa-check-circle correct"></i>
+                            <span>Risposte Corrette:</span>
+                            <strong id="correct-count">0</strong>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-times-circle incorrect"></i>
+                            <span>Risposte Sbagliate:</span>
+                            <strong id="incorrect-count">0</strong>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-percentage"></i>
+                            <span>Percentuale:</span>
+                            <strong id="percentage">0%</strong>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Tempo Totale:</span>
+                            <strong id="total-time">0s</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="performance-message">
+                    <p id="performance-message"></p>
+                </div>
+
+                <div class="answers-review">
+                    <h2><i class="fas fa-list-check"></i> Rivedi le Risposte</h2>
+                    <div id="answers-review-list" class="answers-review-list">
+                        <!-- Answers review will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="high-score-form" id="high-score-form">
+                    <h3><i class="fas fa-medal"></i> Nuovo Record Personale!</h3>
+                    <div class="input-group">
+                        <input type="text" id="player-name" placeholder="Inserisci il tuo nome" maxlength="20">
+                        <button id="save-score-btn" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Salva Punteggio
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="play-again-btn" class="btn btn-primary">
+                        <i class="fas fa-redo"></i> Gioca Ancora
+                    </button>
+                    <button id="home-btn" class="btn btn-secondary">
+                        <i class="fas fa-home"></i> Torna alla Home
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- High Scores Screen -->
+        <div id="high-scores-screen" class="screen">
+            <div class="high-scores-container">
+                <div class="screen-header">
+                    <h1><i class="fas fa-trophy"></i> Classifica</h1>
+                    <button id="close-high-scores-btn" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tutti</button>
+                    <button class="filter-btn" data-filter="javascript">JavaScript</button>
+                    <button class="filter-btn" data-filter="html">HTML</button>
+                    <button class="filter-btn" data-filter="css">CSS</button>
+                    <button class="filter-btn" data-filter="general">Generale</button>
+                </div>
+
+                <div id="high-scores-table" class="high-scores-table">
+                    <!-- High scores table will be loaded here -->
+                </div>
+
+                <div class="screen-actions">
+                    <button id="clear-scores-btn" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Cancella Tutti i Punteggi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

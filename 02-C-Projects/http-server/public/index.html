@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server HTTP in C</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Server HTTP in C</h1>
+            <p class="subtitle">Server HTTP multi-threaded scritto in puro C</p>
+        </header>
+
+        <main>
+            <section class="features">
+                <h2>✨ Funzionalità</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🔌 Socket Programming</h3>
+                        <p>Implementazione raw con socket TCP/IP</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📡 HTTP/1.1</h3>
+                        <p>Protocollo HTTP/1.1 completo</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📁 File Statici</h3>
+                        <p>Servizio di file HTML, CSS, JS, immagini</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🧵 Multi-threading</h3>
+                        <p>Gestione multi-client con thread</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info">
+                <h2>📋 Informazioni Tecniche</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Caratteristica</th>
+                            <th>Implementazione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Linguaggio</td>
+                            <td>C (ANSI C)</td>
+                        </tr>
+                        <tr>
+                            <td>Socket</td>
+                            <td>Winsock2 (Windows) / BSD sockets (Linux)</td>
+                        </tr>
+                        <tr>
+                            <td>Threading</td>
+                            <td>pthread (Linux) / WinAPI Threads (Windows)</td>
+                        </tr>
+                        <tr>
+                            <td>Porta predefinita</td>
+                            <td>8080</td>
+                        </tr>
+                        <tr>
+                            <td>Directory pubblica</td>
+                            <td>./public</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="code">
+                <h2>💻 Esempio di Utilizzo</h2>
+                <pre><code># Compilazione
+make
+
+# Esecuzione
+./server
+
+# Con porta personalizzata
+./server 3000</code></pre>
+            </section>
+
+            <section class="test-links">
+                <h2>🧪 Link di Test</h2>
+                <p>Testa i differenti Content-Type:</p>
+                <ul>
+                    <li><a href="test.html">Pagina HTML di test</a></li>
+                    <li><a href="page2.html">Pagina 2</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Sviluppato con ❤️ in puro C | Compatibile con Windows e Linux</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

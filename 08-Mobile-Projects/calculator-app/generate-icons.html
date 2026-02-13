@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore Icone Calcolatrice - PNG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(145deg, #f6f8fa, #ffffff);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .icon-item:hover {
+            transform: translateY(-5px);
+        }
+        canvas {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        .download-all {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+            font-size: 18px;
+            padding: 15px 30px;
+            margin-top: 20px;
+        }
+        .info {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #00bcd4;
+        }
+        .info h3 {
+            margin-top: 0;
+            color: #006064;
+        }
+        .success {
+            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #4caf50;
+            display: none;
+        }
+        .success.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generatore Icone Calcolatrice</h1>
+        <p class="subtitle">Crea tutte le icone PNG necessarie per la tua PWA con un click!</p>
+
+        <div class="info">
+            <h3>Facile e Veloce 🚀</h3>
+            <p><strong>Opzione 1 (Più facile):</strong> Clicca "Genera Tutte le Icone" per scaricare tutti i file PNG insieme!</p>
+            <p><strong>Opzione 2:</strong> Clicca su ogni icona singolarmente per scaricarla</p>
+            <p><strong>Nota:</strong> Le icone verranno salvate nella cartella Download. Spostale nella cartella dell'app.</p>
+        </div>
+
+        <div class="icon-grid" id="iconGrid"></div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="download-all" onclick="downloadAllIcons()">🎨 Genera Tutte le Icone</button>
+        </div>
+
+        <div id="successMessage" class="success">
+            <h3>✅ Icone generate con successo!</h3>
+            <p>Cerca i file nella cartella Download del tuo computer.</p>
+            <p><strong>Prossimo passo:</strong> Sposta i file nella cartella <code>calculator-app</code></p>
+        </div>
+    </div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+
+        function createIcon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#1e1e1e');
+            gradient.addColorStop(1, '#2d2d2d');
+            ctx.fillStyle = gradient;
+            roundRect(ctx, 0, 0, size, size, size * 0.2);
+            ctx.fill();
+
+            // Calculator body
+            const bodyMargin = size * 0.15;
+            const bodySize = size - (bodyMargin * 2);
+            ctx.fillStyle = '#2d2d2d';
+            roundRect(ctx, bodyMargin, bodyMargin, bodySize, bodySize * 0.8, size * 0.08);
+            ctx.fill();
+
+            // Display
+            const displayMargin = bodyMargin + (bodySize * 0.08);
+            const displayWidth = bodySize * 0.84;
+            const displayHeight = bodySize * 0.25;
+            ctx.fillStyle = '#3d3d3d';
+            roundRect(ctx, displayMargin, displayMargin, displayWidth, displayHeight, size * 0.04);
+            ctx.fill();
+
+            // Display text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${size * 0.1}px monospace`;
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('123.45', displayMargin + displayWidth - (size * 0.05), displayMargin + (displayHeight / 2));
+
+            // Buttons
+            const buttonSize = bodySize * 0.15;
+            const buttonGap = bodySize * 0.06;
+            const startX = bodyMargin + (bodySize * 0.08);
+            const startY = displayMargin + displayHeight + (bodySize * 0.08);
+
+            const colors = ['#ff9f0a', '#333333', '#a5a5a5'];
+
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 4; col++) {
+                    const x = startX + col * (buttonSize + buttonGap);
+                    const y = startY + row * (buttonSize + buttonGap);
+
+                    ctx.beginPath();
+                    ctx.arc(x + buttonSize / 2, y + buttonSize / 2, buttonSize / 2, 0, Math.PI * 2);
+
+                    // Color pattern
+                    if (col === 3) {
+                        ctx.fillStyle = colors[0]; // Orange for operators
+                    } else if (row === 0 && col < 2) {
+                        ctx.fillStyle = colors[2]; // Gray for functions
+                    } else {
+                        ctx.fillStyle = colors[1]; // Dark for numbers
+                    }
+                    ctx.fill();
+                }
+            }
+
+            return canvas;
+        }
+
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+
+        function renderIcons() {
+            const grid = document.getElementById('iconGrid');
+            grid.innerHTML = '';
+
+            sizes.forEach(size => {
+                const canvas = createIcon(size);
+                const item = document.createElement('div');
+                item.className = 'icon-item';
+                item.innerHTML = `
+                    <h3>Icona ${size}x${size}</h3>
+                    ${canvas.outerHTML}
+                    <button onclick="downloadIcon(${size})">⬇️ Scarica PNG</button>
+                `;
+                grid.appendChild(item);
+            });
+        }
+
+        function downloadIcon(size) {
+            const canvas = createIcon(size);
+            const link = document.createElement('a');
+            link.download = `icon-${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAllIcons() {
+            let delay = 0;
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    downloadIcon(size);
+                    if (index === sizes.length - 1) {
+                        setTimeout(() => {
+                            document.getElementById('successMessage').classList.add('show');
+                        }, 500);
+                    }
+                }, delay);
+                delay += 300; // 300ms delay between downloads
+            });
+        }
+
+        // Render icons on page load
+        renderIcons();
+    </script>
+</body>
+</html>

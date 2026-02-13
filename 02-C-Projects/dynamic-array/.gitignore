@@ -1,0 +1,43 @@
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+
+# Executables
+dynamic_array_test
+test
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Valgrind output
+valgrind-out.txt
+valgrind-*.txt
+
+# Profiling
+gmon.out
+callgrind.out.*
+analysis.txt
+
+# Core dumps
+core
+core.*
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build directories
+build/
+dist/

@@ -1,0 +1,11 @@
+# Riproduttore Musicale - Music Player
+# Dipendenze Python richieste - Required Python dependencies
+
+# Audio playback - Riproduzione audio
+pygame>=2.5.0
+
+# HTTP requests for lyrics API - Richieste HTTP per API testi
+requests>=2.31.0
+
+# Optional: ID3 tag extraction - Opzionale: estrazione tag ID3
+mutagen>=1.47.0

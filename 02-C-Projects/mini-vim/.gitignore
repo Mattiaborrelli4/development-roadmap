@@ -1,0 +1,49 @@
+# Mini Vim - Git Ignore File
+
+# Eseguibili
+mini-vim
+mini-vim.exe
+*.exe
+
+# File oggetto
+*.o
+*.obj
+
+# File di dipendenze
+*.d
+
+# File di backup
+*~
+*.bak
+*.backup
+
+# File temporanei
+*.tmp
+*.temp
+
+# File core dump
+core
+core.*
+
+# File swap (simili a vim)
+*.swp
+*.swo
+.*.sw*
+
+# Directory di build
+build/
+dist/
+bin/
+
+# IDE specific
+.vscode/
+.idea/
+*.sublime-*
+.DS_Store
+
+# Debug files
+*.debug
+DEBUG
+
+# Log files
+*.log

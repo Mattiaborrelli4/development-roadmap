@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🍅 Pomodoro Timer</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <main class="main">
+            <div class="session-type">
+                <button class="session-btn active" id="workBtn">Lavoro</button>
+                <button class="session-btn" id="breakBtn">Pausa</button>
+            </div>
+
+            <div class="timer-display">
+                <div class="time" id="timeDisplay">25:00</div>
+                <div class="session-label" id="sessionLabel">Tempo di Lavoro</div>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn btn-start" id="startBtn">Avvia</button>
+                <button class="control-btn btn-pause" id="pauseBtn">Pausa</button>
+                <button class="control-btn btn-reset" id="resetBtn">Reset</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Pomodori Completati</span>
+                    <span class="stat-value" id="completedPomodoros">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Sessione Corrente</span>
+                    <span class="stat-value" id="currentSession">1</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Tecnica Pomodoro: 25 minuti di lavoro, 5 minuti di pausa</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

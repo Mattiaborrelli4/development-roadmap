@@ -1,0 +1,55 @@
+# Configurazione Echo Daemon
+# =========================
+# File di configurazione per il network daemon
+
+# Porta TCP per il server echo
+# Porte < 1024 richiedono privilegi root
+port: 8888
+
+# Porta UDP per il server echo
+udp_port: 8889
+
+# Numero massimo di client concorrenti
+# Ogni client usa un processo/thread separato
+max_clients: 10
+
+# Path del file di log
+# Il daemon scriverà qui tutti i messaggi
+log_file: /var/log/echo-daemon.log
+
+# Path del file PID
+# Contiene il PID del processo daemon in esecuzione
+pid_file: /var/run/echo-daemon.pid
+
+# Livello di logging
+# Valori: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_level: INFO
+
+# Dimensione massima file log (in bytes)
+# 10485760 = 10 MB
+max_log_size: 10485760
+
+# Numero di backup log files da mantenere
+# I vecchi log vengono rinominati con .1, .2, .3...
+log_backup_count: 5
+
+# Buffer size per I/O socket (in bytes)
+# 4096 = 4 KB
+buffer_size: 4096
+
+# Timeout per inattività client (in secondi)
+# 0 = nessun timeout
+client_timeout: 300
+
+# Host di bind
+# 0.0.0.0 = tutte le interfacce disponibili
+bind_host: "0.0.0.0"
+
+# Modalità daemon
+# true: esegue come background daemon
+# false: resta in foreground (utile per debug)
+daemonize: true
+
+# User per esecuzione (richiede root per drop privileges)
+# Lasciare vuoto per non cambiare user
+# user: nobody

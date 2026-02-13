@@ -1,0 +1,67 @@
+# Web Vulnerability Scanner Configuration
+
+# Scanner Settings
+scanner:
+  max_pages: 100
+  max_depth: 3
+  delay: 0.2  # seconds between requests
+  timeout: 30  # seconds
+  max_retries: 3
+  respect_robots_txt: true
+  user_agent: "WebVulnScanner/1.0 (Educational Security Tool)"
+  safe_mode: true
+  read_only: true
+
+# Enabled Checks
+checks:
+  sqli: true
+  xss: true
+  auth: true
+  config: true
+  headers: true
+
+# Rate Limiting
+rate_limiting:
+  max_requests_per_second: 5
+  delay_between_requests: 0.2
+  max_retries: 3
+
+# Output Settings
+output:
+  default_format: html
+  include_evidence: true
+  max_evidence_length: 500
+  colorize_output: true
+
+# Logging
+logging:
+  level: INFO
+  file: scanner.log
+  max_size: 10MB
+  backup_count: 5
+
+# Advanced Settings
+advanced:
+  follow_redirects: true
+  max_redirects: 5
+  verify_ssl: true
+  allow_ipv6: true
+
+# Excluded Patterns (for safety)
+excluded_patterns:
+  - "DROP TABLE"
+  - "DELETE FROM"
+  - "TRUNCATE"
+  - "UPDATE.*SET"
+  - "INSERT INTO"
+  - "exec("
+  - "eval("
+  - "system("
+  - "UNION.*SELECT.*DROP"
+
+# Safe Scanning
+safe_mode:
+  enabled: true
+  no_modification: true
+  respect_robots: true
+  rate_limit: true

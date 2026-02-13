@@ -1,0 +1,249 @@
+/* Stili principali per Currency Converter */
+
+/* Root */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Header */
+.header {
+    -fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    -fx-background-radius: 0 0 10 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.subtitle {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+/* Conversion Panel */
+.conversion-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-padding: 25;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+}
+
+.combo-box:hover {
+    -fx-border-color: #667eea;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #333;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #667eea;
+    -fx-text-fill: white;
+}
+
+/* TextField */
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-padding: 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #667eea;
+    -fx-border-width: 2;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #667eea;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #5568d3;
+}
+
+.button:pressed {
+    -fx-background-color: #4451b8;
+}
+
+.button:disabled {
+    -fx-background-color: #ccc;
+    -fx-effect: null;
+}
+
+.convert-button {
+    -fx-background-color: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+}
+
+.convert-button:hover {
+    -fx-background-color: linear-gradient(to right, #0e8076 0%, #2dd66b 100%);
+}
+
+.swap-button {
+    -fx-background-color: #f39c12;
+    -fx-font-size: 18px;
+    -fx-padding: 8 15;
+}
+
+.swap-button:hover {
+    -fx-background-color: #e67e22;
+}
+
+.refresh-button {
+    -fx-background-color: #3498db;
+    -fx-padding: 8 15;
+}
+
+.refresh-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Result Label */
+.result-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #11998e;
+    -fx-background-color: #f0fdf4;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-alignment: center-left;
+}
+
+/* Rate Info */
+.rate-info {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 15 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.rate-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #667eea;
+    -fx-font-size: 16px;
+}
+
+.update-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 12px;
+}
+
+/* Chart Container */
+.chart-container {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: #fafafa;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: #e0e0e0;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #e0e0e0;
+}
+
+.chart-series-line {
+    -fx-stroke: #667eea;
+    -fx-stroke-width: 3;
+}
+
+.chart-line-symbol {
+    -fx-background-color: #667eea, white;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: #667eea;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #667eea, white;
+}
+
+/* Chart Axis */
+.axis {
+    -fx-tick-label-fill: #666;
+    -fx-font-size: 11px;
+}
+
+.axis-label {
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+}
+
+.footer .label {
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-font-size: 12px;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    -fx-progress-color: #667eea;
+}
+
+/* Alert Dialogs */
+.alert {
+    -fx-background-color: white;
+}
+
+.alert .header-panel {
+    -fx-background-color: #667eea;
+}
+
+.alert .header-panel .label {
+    -fx-text-fill: white;
+}

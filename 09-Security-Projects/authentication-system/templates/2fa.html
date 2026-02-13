@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Verifica 2FA - Secure Auth{% endblock %}
+
+{% block content %}
+    <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+        <span class="badge badge-2fa">2FA</span>
+    </div>
+
+    <h1>Autenticazione a Due Fattori</h1>
+    <p class="subtitle">Inserisci il codice dalla tua app autenticatore</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'success' if category == 'success' else 'error' }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form id="2faForm" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="email" value="{{ email }}">
+
+        <div class="form-group">
+            <label for="totp_code">Codice di Verifica</label>
+            <input
+                type="text"
+                id="totp_code"
+                name="totp_code"
+                required
+                maxlength="6"
+                pattern="[0-9]{6}"
+                placeholder="123456"
+                style="letter-spacing: 0.5em; text-align: center; font-size: 24px;"
+                autofocus
+            >
+            <div style="text-align: center; color: #666; font-size: 13px; margin-top: 8px;">
+                Inserisci le 6 cifre da Google Authenticator
+            </div>
+        </div>
+
+        <button type="submit" class="btn">Verifica</button>
+    </form>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="links">
+        <a href="{{ url_for('auth.login')">← Torna al login</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('2faForm');
+        const codeInput = document.getElementById('totp_code');
+        const loading = document.getElementById('loading');
+
+        // Auto-focus e formatta input
+        codeInput.addEventListener('input', (e) => {
+            // Rimuovi non-numeri
+            e.target.value = e.target.value.replace(/\D/g, '');
+
+            // Auto-submit a 6 cifre
+            if (e.target.value.length === 6) {
+                form.dispatchEvent(new Event('submit'));
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value;
+            const totp_code = codeInput.value;
+
+            if (totp_code.length !== 6) {
+                showAlert('Inserisci un codice di 6 cifre', 'error');
+                return;
+            }
+
+            loading.classList.add('active');
+
+            try {
+                const response = await fetchWithCSRF('/auth/verify-2fa', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, totp_code })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Salva token e reindirizza
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                    showAlert('Verifica completata!', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/dashboard';
+                    }, 1000);
+                } else {
+                    showAlert(data.errors?.join(', ') || 'Codice non valido', 'error');
+                    codeInput.value = '';
+                    codeInput.focus();
+                }
+            } catch (error) {
+                showAlert('Errore di connessione', 'error');
+            } finally {
+                loading.classList.remove('active');
+            }
+        });
+
+        // Focus su input
+        codeInput.focus();
+    </script>
+{% endblock %}

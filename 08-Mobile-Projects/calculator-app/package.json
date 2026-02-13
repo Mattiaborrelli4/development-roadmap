@@ -1,0 +1,23 @@
+{
+  "name": "calcolatrice-pwa",
+  "version": "1.0.0",
+  "description": "Una calcolatrice mobile-first Progressive Web App",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1",
+    "serve": "npx http-server -p 8000 -c-1",
+    "test": "echo \"Apri http://localhost:8000 nel browser\" && exit 0"
+  },
+  "keywords": [
+    "calculator",
+    "pwa",
+    "mobile",
+    "progressive-web-app",
+    "italian"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

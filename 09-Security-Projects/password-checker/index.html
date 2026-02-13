@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificatore Forza Password</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Verificatore Forza Password</h1>
+            <p class="subtitle">Analizza la sicurezza della tua password in tempo reale</p>
+        </header>
+
+        <main>
+            <div class="checker-card">
+                <div class="input-section">
+                    <label for="passwordInput">Inserisci la tua password:</label>
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="passwordInput"
+                            placeholder="Digita la tua password..."
+                            autocomplete="off"
+                        >
+                        <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostra password">
+                            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Strength Meter -->
+                <div class="strength-section">
+                    <div class="strength-header">
+                        <span>Livello di Sicurezza:</span>
+                        <span class="strength-label" id="strengthLabel">-</span>
+                    </div>
+                    <div class="strength-bar-container">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="strength-score">
+                        <span>Punteggio: <strong id="scoreValue">0</strong>/5</span>
+                    </div>
+                </div>
+
+                <!-- Criteria Check -->
+                <div class="criteria-section">
+                    <h3>Criteri di Sicurezza</h3>
+                    <ul class="criteria-list">
+                        <li class="criterion" data-criteria="length">
+                            <span class="icon">❌</span>
+                            <span class="text">Almeno 8 caratteri</span>
+                        </li>
+                        <li class="criterion" data-criteria="numbers">
+                            <span class="icon">❌</span>
+                            <span class="text">Contiene numeri</span>
+                        </li>
+                        <li class="criterion" data-criteria="uppercase">
+                            <span class="icon">❌</span>
+                            <span class="text">Contiene lettere maiuscole</span>
+                        </li>
+                        <li class="criterion" data-criteria="lowercase">
+                            <span class="icon">❌</span>
+                            <span class="text">Contiene lettere minuscole</span>
+                        </li>
+                        <li class="criterion" data-criteria="special">
+                            <span class="icon">❌</span>
+                            <span class="text">Contiene caratteri speciali (!@#$%...)</span>
+                        </li>
+                        <li class="criterion" data-criteria="common">
+                            <span class="icon">❌</span>
+                            <span class="text">Non è una password comune</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tips Section -->
+                <div class="tips-section" id="tipsSection">
+                    <h3>💡 Consigli per Migliorare</h3>
+                    <ul class="tips-list" id="tipsList">
+                        <li>Inizia a digitare per ricevere consigli personalizzati</li>
+                    </ul>
+                </div>
+
+                <!-- Password Info -->
+                <div class="info-section">
+                    <h3>ℹ️ Informazioni sulla Password</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Lunghezza:</span>
+                            <span class="value" id="lengthInfo">0 caratteri</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Tipo di caratteri:</span>
+                            <span class="value" id="charsInfo">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Tempo di crack stimato:</span>
+                            <span class="value" id="crackTimeInfo">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="security-notice">
+                <p>🔒 <strong>Privacy:</strong> La tua password non viene salvata o inviata a nessun server.
+                Tutta l'analisi viene eseguita localmente nel tuo browser.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Creato per scopi educativi • Usa password forti e uniche per ogni account</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

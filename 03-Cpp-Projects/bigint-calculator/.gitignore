@@ -1,0 +1,29 @@
+# File compilati
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Dipendenze
+*.d
+
+# Directory di build CMake
+cmake-build-*/
+build/
+BUILD/
+
+# File temporanei
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Output compilatore
+*.log
+*.aux
+
+# Sistema
+.DS_Store
+Thumbs.db

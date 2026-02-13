@@ -1,0 +1,97 @@
+### TODO API - Test Collection
+### Usa con REST Client Extension per VS Code
+### O usa con curl/Postman
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+###
+### 1. Root - Info API
+GET {{baseUrl}}/
+
+###
+### 2. GET - Ottieni tutti i todos
+GET {{baseUrl}}/api/todos
+
+###
+### 3. GET - Ottieni todo specifico
+GET {{baseUrl}}/api/todos/1
+
+###
+### 4. POST - Crea nuovo todo (completo)
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Comprare latte",
+  "description": "Andare al supermercato alle 17:00",
+  "completed": false
+}
+
+###
+### 5. POST - Crea todo (solo titolo obbligatorio)
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Chiamare il dottore"
+}
+
+###
+### 6. POST - Test validazione (titolo vuoto)
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "",
+  "description": "Questo dovrebbe fallire"
+}
+
+###
+### 7. PUT - Aggiorna todo completo
+PUT {{baseUrl}}/api/todos/1
+Content-Type: {{contentType}}
+
+{
+  "title": "Titolo aggiornato",
+  "description": "Descrizione aggiornata",
+  "completed": true
+}
+
+###
+### 8. PUT - Aggiorna solo titolo
+PUT {{baseUrl}}/api/todos/1
+Content-Type: {{contentType}}
+
+{
+  "title": "Solo titolo modificato"
+}
+
+###
+### 9. PUT - Aggiorna solo completed
+PUT {{baseUrl}}/api/todos/1
+Content-Type: {{contentType}}
+
+{
+  "completed": true
+}
+
+###
+### 10. PATCH - Toggle completed
+PATCH {{baseUrl}}/api/todos/1/toggle
+
+###
+### 11. GET - Todo non esistente (404)
+GET {{baseUrl}}/api/todos/99999
+
+###
+### 12. DELETE - Elimina todo
+DELETE {{baseUrl}}/api/todos/1
+
+###
+### 13. DELETE - Elimina tutti itodos
+DELETE {{baseUrl}}/api/todos
+
+###
+### 14. GET - Endpoint non esistente (404)
+GET {{baseUrl}}/api/non-esistente

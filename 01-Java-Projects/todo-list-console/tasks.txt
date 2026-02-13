@@ -1,0 +1,8 @@
+Studiare per l'esame di Java|1
+Completare il laboratorio di programmazione|2
+Comprare il libro di algoritmi|3
+Preparare presentazione per il progetto|1
+Inviare email al professore|2
+Organizzare appunti per l'esame|2
+Review del codice del progetto|3
+Aggiornare il repository GitHub|3

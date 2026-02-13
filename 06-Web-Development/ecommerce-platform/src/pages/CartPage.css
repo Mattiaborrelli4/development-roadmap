@@ -1,0 +1,22 @@
+.cart-page-wrapper {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.cart-page-wrapper h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .cart-page-wrapper h1 {
+    font-size: 2rem;
+  }
+}

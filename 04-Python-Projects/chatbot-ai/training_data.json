@@ -1,0 +1,118 @@
+{
+  "saluto": {
+    "patterns": [
+      "\\b(ciao|salve|hey|buongiorno|buonasera|buon pomeriggio)\\b.*",
+      "\\bhola\\b",
+      "\\bcome stai\\b.*",
+      "\\bcome va\\b.*"
+    ],
+    "responses": [
+      "Ciao! Come posso aiutarti oggi?",
+      "Salve! Sono qui per assisterti.",
+      "Ciao! Dimmi tutto, sono pronto ad ascoltarti.",
+      "Hey! Cosa vuoi sapere?"
+    ]
+  },
+  "arrivederci": {
+    "patterns": [
+      "\\b(arrivederci|addio|ciao ciao|alla prossima|a presto)\\b.*",
+      "\\bbye\\b",
+      "\\besci\\b.*",
+      "\\bchiudi.*\\b"
+    ],
+    "responses": [
+      "Arrivederci! È stato un piacere chattare con te.",
+      "A presto! Torna presto a trovarmi.",
+      "Ciao ciao! Alla prossima conversazione!",
+      "Addio! Ha una bellissima giornata!"
+    ]
+  },
+  "meteo": {
+    "patterns": [
+      "\\b(meteo|tempo|temperature|previsioni)\\b.*",
+      "\\b(piove|sole|nuvolo|freddo|caldo)\\b.*",
+      "\\bche tempo\\b.*",
+      "\\bcom'e' il tempo\\b.*"
+    ],
+    "responses": [
+      "Non posso controllare il meteo reale, ma spero sia bello!",
+      "Per il meteo preciso, ti consiglio di controllare un'app meteo.",
+      "Sarebbe bello se ci fosse il sole oggi, non trovi?",
+      "Il meteo è imprevedibile, ma portati sempre un ombrello!"
+    ]
+  },
+  "notizie": {
+    "patterns": [
+      "\\b(notizie|news|attualita|giornale)\\b.*",
+      "\\bsuccede\\b.*",
+      "\\bultime notizie\\b.*",
+      "\\bcosa c'e' di nuovo\\b.*"
+    ],
+    "responses": [
+      "Non ho accesso alle notizie in tempo reale, ma il mondo è sempre pieno di eventi!",
+      "Per le ultime notizie, ti consiglio di visitare siti di informazione.",
+      "Ci sono sempre molte cose che accadono nel mondo!",
+      "Il mondo cambia ogni giorno, rimani informato!"
+    ]
+  },
+  "barzelletta": {
+    "patterns": [
+      "\\b(barzelletta|raccontami|fami ridere|joke)\\b.*",
+      "\\b(barze|scherzo)\\b.*",
+      "\\bchi ha detto\\b.*"
+    ],
+    "responses": [
+      "Perché i programmatori preferiscono il mode scuro? Perché la luce attira i bug!",
+      "Cosa dice un informatico a un altro? 'Hai 1000 problemi, ma la soluzione non è tra di loro'.",
+      "Perché gli informatici confondono Natale e Halloween? Perché OCT 31 = DEC 25!",
+      "Un uomo entra in un bar e chiede: 'Quanto costa un Wi-Fi?' Il barista risponde: 'Per te è gratis!'"
+    ]
+  },
+  "aiuto": {
+    "patterns": [
+      "\\b(aiuto|help|aiutami|cos sai fare)\\b.*",
+      "\\b(istruzioni|come funzioni|guida)\\b.*",
+      "\\b(cosa puoi fare|capabilities)\\b.*"
+    ],
+    "responses": [
+      "Posso chattare con te, raccontare barzellette, e rispondere a domande semplici!",
+      "Sono un chatbot educativo. Chiedimi del meteo, notizie, o dì semplicemente ciao!",
+      "Scrivi 'impara' per insegnarmi nuove risposte!",
+      "Posso fare molte cose: salutare, rispondere, e imparare da te!"
+    ]
+  },
+  "grazie": {
+    "patterns": [
+      "\\b(grazie|grazie mille|thank you|thanks)\\b.*",
+      "\\b(apprezzo|gentile)\\b.*"
+    ],
+    "responses": [
+      "Prego! Sempre felice di aiutare!",
+      "Di nulla! Sono qui per questo.",
+      "Il piacere è tutto mio!",
+      "Prego! C'è altro che posso fare?"
+    ]
+  },
+  "nome": {
+    "patterns": [
+      "\\b(come ti chiami|chi sei|il tuo nome|ti chiami)\\b.*",
+      "\\b(presentati|presentazione)\\b.*"
+    ],
+    "responses": [
+      "Sono ChatbotAI, il tuo assistente virtuale educativo!",
+      "Mi chiamo ChatbotAI, creato per aiutarti a imparare Python!",
+      "Sono un chatbot semplice ma potente. Chiamami ChatbotAI!",
+      "ChatbotAI è il mio nome, chiacchierare è il mio gioco!"
+    ]
+  },
+  "tempo": {
+    "patterns": [
+      "\\b(che ore|ora|orario|clock)\\b.*",
+      "\\b(ora attuale)\\b.*"
+    ],
+    "responses": [
+      "Non ho un orologio integrato, ma il tuo computer sa l'ora!",
+      "Controlla l'ora sul tuo dispositivo!"
+    ]
+  }
+}

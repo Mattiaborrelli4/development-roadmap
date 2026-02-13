@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria CSS Art - Pure CSS Illustrations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>🎨 Galleria CSS Art</h1>
+        <p class="subtitle">10+ Illustrazioni Pure CSS - Nessuna Immagine, Solo Codice</p>
+        <div class="theme-toggle">
+            <button id="themeToggle" class="theme-btn">🌙 Tema Scuro</button>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <!-- 1. Emoji Face -->
+        <section class="artwork-card" data-artwork="emoji">
+            <div class="artwork-preview">
+                <div class="emoji-container">
+                    <!-- Smile Face -->
+                    <div class="emoji-face smile">
+                        <div class="eyes">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                        </div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>1. Faccia Emoji</h3>
+                <p>Espressioni create con puro CSS: smile, sad, e wink</p>
+                <div class="emoji-controls">
+                    <button class="emoji-btn" data-emoji="smile">😊 Smile</button>
+                    <button class="emoji-btn" data-emoji="sad">😢 Triste</button>
+                    <button class="emoji-btn" data-emoji="wink">😉 Occhiolino</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Geometric Shapes -->
+        <section class="artwork-card" data-artwork="geometric">
+            <div class="artwork-preview">
+                <div class="geometric-container">
+                    <div class="geo-shape circle"></div>
+                    <div class="geo-shape square"></div>
+                    <div class="geo-shape triangle"></div>
+                    <div class="geo-shape hexagon"></div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>2. Forme Geometriche</h3>
+                <p>Cerchi, quadrati, triangoli con gradienti e animazioni</p>
+            </div>
+        </section>
+
+        <!-- 3. Landscape -->
+        <section class="artwork-card" data-artwork="landscape">
+            <div class="artwork-preview">
+                <div class="landscape-container">
+                    <div class="sky">
+                        <div class="sun"></div>
+                        <div class="clouds">
+                            <div class="cloud"></div>
+                            <div class="cloud cloud-2"></div>
+                        </div>
+                    </div>
+                    <div class="mountains">
+                        <div class="mountain mountain-1"></div>
+                        <div class="mountain mountain-2"></div>
+                        <div class="mountain mountain-3"></div>
+                    </div>
+                    <div class="ground"></div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>3. Paesaggio</h3>
+                <p>Scene naturale con sole, montagne e cielo animato</p>
+            </div>
+        </section>
+
+        <!-- 4. Heart Icon -->
+        <section class="artwork-card" data-artwork="heart">
+            <div class="artwork-preview">
+                <div class="heart-container">
+                    <div class="heart"></div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>4. Icona Cuore</h3>
+                <p>Cuore pulsante creato con pseudo-elementi CSS</p>
+            </div>
+        </section>
+
+        <!-- 5. Star Icon -->
+        <section class="artwork-card" data-artwork="star">
+            <div class="artwork-preview">
+                <div class="star-container">
+                    <div class="star"></div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>5. Icona Stella</h3>
+                <p>Stella luminosa con animazione rotante</p>
+            </div>
+        </section>
+
+        <!-- 6. Cartoon Character -->
+        <section class="artwork-card" data-artwork="character">
+            <div class="artwork-preview">
+                <div class="character-container">
+                    <div class="character">
+                        <div class="char-head">
+                            <div class="char-eyes">
+                                <div class="char-eye"></div>
+                                <div class="char-eye"></div>
+                            </div>
+                            <div class="char-nose"></div>
+                            <div class="char-mouth"></div>
+                        </div>
+                        <div class="char-body"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>6. Personaggio Cartoon</h3>
+                <p>Carino personaggio animato con CSS</p>
+            </div>
+        </section>
+
+        <!-- 7. Abstract Art -->
+        <section class="artwork-card" data-artwork="abstract">
+            <div class="artwork-preview">
+                <div class="abstract-container">
+                    <div class="abstract-shape shape-1"></div>
+                    <div class="abstract-shape shape-2"></div>
+                    <div class="abstract-shape shape-3"></div>
+                    <div class="abstract-shape shape-4"></div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>7. Arte Astratta</h3>
+                <p>Composizione dinamica con forme e gradienti</p>
+            </div>
+        </section>
+
+        <!-- 8. Loading Spinner -->
+        <section class="artwork-card" data-artwork="spinner">
+            <div class="artwork-preview">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                    <div class="dots-spinner">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>8. Loading Spinner</h3>
+                <p>Diverse animazioni di caricamento in puro CSS</p>
+            </div>
+        </section>
+
+        <!-- 9. Button Effects -->
+        <section class="artwork-card" data-artwork="button">
+            <div class="artwork-preview">
+                <div class="button-container">
+                    <button class="btn-primary">Hover Me</button>
+                    <button class="btn-neon">Neon Effect</button>
+                    <button class="btn-3d">3D Button</button>
+                    <button class="btn-gradient">Gradient</button>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>9. Pulsanti con Effetti</h3>
+                <p>Collection di bottoni con effetti hover innovativi</p>
+            </div>
+        </section>
+
+        <!-- 10. Card Design -->
+        <section class="artwork-card" data-artwork="card">
+            <div class="artwork-preview">
+                <div class="card-container">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <div class="avatar-placeholder">
+                                <span>👤</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h4>Mario Rossi</h4>
+                            <p>Developer CSS</p>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <strong>128</strong>
+                                <span>Progetti</span>
+                            </div>
+                            <div class="stat">
+                                <strong>1.2K</strong>
+                                <span>Follower</span>
+                            </div>
+                        </div>
+                        <button class="follow-btn">Segui</button>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>10. Card Design</h3>
+                <p>Scheda profilo moderna con hover effects</p>
+            </div>
+        </section>
+
+        <!-- 11. Animation Showcase -->
+        <section class="artwork-card" data-artwork="animation">
+            <div class="artwork-preview">
+                <div class="animation-container">
+                    <div class="bouncing-ball"></div>
+                    <div class="wave-animation">
+                        <div class="wave"></div>
+                        <div class="wave wave-2"></div>
+                        <div class="wave wave-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>11. Animation Showcase</h3>
+                <p>Dimostrazione di animazioni CSS avanzate</p>
+            </div>
+        </section>
+
+        <!-- 12. Music Note -->
+        <section class="artwork-card" data-artwork="music">
+            <div class="artwork-preview">
+                <div class="music-container">
+                    <div class="music-note">
+                        <div class="note-head"></div>
+                        <div class="note-stem"></div>
+                        <div class="note-flag"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h3>12. Nota Musicale</h3>
+                <p>Nota musicale animata con effetto danzante</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 CSS Art Gallery - Creato con ❤️ e puro CSS</p>
+        <p>Tutte le illustrazioni sono create al 100% con CSS, senza immagini</p>
+    </footer>
+
+    <script>
+        // Emoji face switcher
+        const emojiButtons = document.querySelectorAll('.emoji-btn');
+        const emojiFace = document.querySelector('.emoji-face');
+
+        emojiButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const emojiType = btn.dataset.emoji;
+                emojiFace.className = `emoji-face ${emojiType}`;
+            });
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            document.body.classList.toggle('dark-theme', isDark);
+            themeToggle.textContent = isDark ? '☀️ Tema Chiaro' : '🌙 Tema Scuro';
+        });
+
+        // Card hover effect with 3D tilt
+        const cards = document.querySelectorAll('.artwork-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

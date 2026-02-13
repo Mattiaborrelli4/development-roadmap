@@ -1,0 +1,53 @@
+currency-converter-app/
+│
+├── 📱 App.js                                    # Entry point principale
+├── ⚙️ app.json                                  # Configurazione Expo
+├── 📦 package.json                              # Dipendenze npm
+├── 🔧 babel.config.js                           # Configurazione Babel
+├── 🙈 .gitignore                                # File ignorati da Git
+│
+├── 📁 assets/                                   # Asset statici
+│   └── 📄 placeholder.txt                        # Placeholder per icone
+│
+├── 📁 src/                                      # Codice sorgente
+│   │
+│   ├── 📁 components/                            # Componenti UI (6 files)
+│   │   ├── 💰 CurrencyInput.jsx                 # Input amount + currency selector
+│   │   ├── 🌐 CurrencyPicker.jsx                # Modal currency list picker
+│   │   ├── 🔄 SwapButton.jsx                    # Animated swap button
+│   │   ├── 📊 ResultCard.jsx                    # Conversion result card
+│   │   ├── ⭐ FavoritesBar.jsx                  # Favorites quick-select bar
+│   │   └── 📜 HistoryList.jsx                   # Horizontal history list
+│   │
+│   ├── 📁 screens/                               # Schermate (1 file)
+│   │   └── 📱 ConverterScreen.jsx               # Main converter screen
+│   │
+│   ├── 📁 services/                              # Business logic (2 files)
+│   │   ├── 💱 currencyAPI.js                    # Exchange rate API service
+│   │   └── 💾 storageService.js                 # AsyncStorage management
+│   │
+│   ├── 📁 hooks/                                 # Custom hooks (2 files)
+│   │   ├── 🌍 useCurrencies.js                  # Rates & network state
+│   │   └── 💱 useConverter.js                   # Conversion logic
+│   │
+│   ├── 📁 utils/                                 # Utilities (1 file)
+│   │   └── 📋 constants.js                      # App constants & config
+│   │
+│   └── 📁 styles/                                # Styling (1 file)
+│       └── 🎨 theme.js                          # Theme & colors
+│
+├── 📖 README.md                                 # Documentazione italiana
+├── 🚀 SETUP_GUIDE.md                            # Guida installazione
+├── 👨‍💻 DEVELOPER_GUIDE.md                       # Guida sviluppatori
+├── 🏗️ PROJECT_STRUCTURE.md                      # Architettura dettagliata
+└── ✅ FEATURES_CHECKLIST.md                     # Lista completezza
+
+---
+📊 STATISTICHE:
+- File totali: 22
+- Componenti: 6
+- Schermate: 1
+- Services: 2
+- Hooks: 2
+- Documentazione: 5 file
+- Linee di codice: ~2,500

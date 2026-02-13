@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer - Gestione del Tempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header con titolo -->
+        <header>
+            <h1>🍅 Pomodoro Timer</h1>
+            <p class="subtitle">Technica Pomodoro per la produttività</p>
+        </header>
+
+        <!-- Sezione principale del timer -->
+        <main>
+            <!-- Selettore della modalità (Lavoro/Pausa) -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="work">💼 Lavoro</button>
+                <button class="mode-btn" data-mode="break">☕ Pausa</button>
+            </div>
+
+            <!-- Display del timer -->
+            <div class="timer-display">
+                <div class="time" id="time">25:00</div>
+                <div class="mode-label" id="mode-label">Tempo di Lavoro</div>
+            </div>
+
+            <!-- Controlli del timer -->
+            <div class="controls">
+                <button class="control-btn" id="start-btn">
+                    <span class="btn-icon">▶️</span>
+                    <span class="btn-text">Avvia</span>
+                </button>
+                <button class="control-btn" id="pause-btn" disabled>
+                    <span class="btn-icon">⏸️</span>
+                    <span class="btn-text">Pausa</span>
+                </button>
+                <button class="control-btn" id="reset-btn">
+                    <span class="btn-icon">🔄</span>
+                    <span class="btn-text">Reset</span>
+                </button>
+            </div>
+
+            <!-- Tracker delle sessioni -->
+            <div class="session-tracker">
+                <h2>📊 Sessioni di Oggi</h2>
+                <div class="session-count">
+                    <span class="count" id="session-count">0</span>
+                    <span class="label">pomodori completati</span>
+                </div>
+                <div class="session-dots" id="session-dots">
+                    <!-- I puntini verranno aggiunti dinamicamente con JavaScript -->
+                </div>
+            </div>
+
+            <!-- Statistiche -->
+            <div class="statistics">
+                <h2>📈 Statistiche Totali</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-sessions">0</div>
+                        <div class="stat-label">Sessioni Totali</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-time">0</div>
+                        <div class="stat-label">Minuti di Lavoro</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="best-day">0</div>
+                        <div class="stat-label">Record Giornaliero</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Log delle sessioni -->
+            <div class="session-log">
+                <h2>📝 Cronologia Sessioni</h2>
+                <div class="log-list" id="log-list">
+                    <p class="empty-message">Nessuna sessione completata oggi</p>
+                </div>
+                <button class="clear-btn" id="clear-stats-btn">🗑️ Cancella Statistiche</button>
+            </div>
+        </main>
+
+        <!-- Footer con informazioni -->
+        <footer>
+            <p>Tecnica Pomodoro: 25 minuti di lavoro concentrato, 5 minuti di pausa</p>
+            <p class="tips">💡 Consiglia: Dopo 4 pomodori, fai una pausa lunga di 15-30 minuti</p>
+        </footer>
+    </div>
+
+    <!-- Script JavaScript principale -->
+    <script src="app.js"></script>
+</body>
+</html>

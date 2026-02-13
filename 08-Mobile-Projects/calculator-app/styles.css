@@ -1,0 +1,341 @@
+/* ========== RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #000000;
+    --calculator-bg: #1e1e1e;
+    --display-bg: #2d2d2d;
+    --button-bg: #333333;
+    --button-hover: #404040;
+    --button-active: #505050;
+    --operator-bg: #ff9f0a;
+    --operator-hover: #ffb340;
+    --operator-active: #ffc66b;
+    --function-bg: #a5a5a5;
+    --function-hover: #c0c0c0;
+    --function-active: #d0d0d0;
+    --equals-bg: #ff9f0a;
+    --equals-hover: #ffb340;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --border-radius: 12px;
+    --button-radius: 50%;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-sm);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== APP CONTAINER ========== */
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.app-header {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ========== CALCULATOR ========== */
+.calculator {
+    background-color: var(--calculator-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== DISPLAY ========== */
+.display {
+    background-color: var(--display-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    text-align: right;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.display-previous {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    min-height: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.display-current {
+    font-size: 3rem;
+    font-weight: 300;
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 1.1;
+}
+
+/* ========== BUTTONS GRID ========== */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.button {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: var(--button-radius);
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Button Colors */
+.button-number {
+    background-color: var(--button-bg);
+    color: var(--text-light);
+}
+
+.button-number:active {
+    background-color: var(--button-active);
+    transform: scale(0.95);
+}
+
+.button-operator {
+    background-color: var(--operator-bg);
+    color: var(--text-light);
+    font-size: 1.8rem;
+}
+
+.button-operator:active {
+    background-color: var(--operator-active);
+    transform: scale(0.95);
+}
+
+.button-function {
+    background-color: var(--function-bg);
+    color: var(--text-dark);
+}
+
+.button-function:active {
+    background-color: var(--function-active);
+    transform: scale(0.95);
+}
+
+.button-equals {
+    background-color: var(--equals-bg);
+    color: var(--text-light);
+    font-size: 1.8rem;
+}
+
+.button-equals:active {
+    background-color: var(--equals-hover);
+    transform: scale(0.95);
+}
+
+/* Button Active State */
+.button.active {
+    filter: brightness(1.2);
+    transform: scale(0.95);
+}
+
+/* Disable text selection on buttons */
+.button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ========== INSTALL PROMPT ========== */
+.install-prompt {
+    background-color: var(--calculator-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.install-prompt.hidden {
+    display: none;
+}
+
+.install-prompt p {
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.install-button,
+.dismiss-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--spacing-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 var(--spacing-xs);
+}
+
+.install-button {
+    background-color: var(--operator-bg);
+    color: var(--text-light);
+}
+
+.install-button:hover {
+    background-color: var(--operator-hover);
+}
+
+.dismiss-button {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dismiss-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 360px) {
+    .display-current {
+        font-size: 2.5rem;
+    }
+
+    .button {
+        font-size: 1.3rem;
+    }
+
+    .button-operator,
+    .button-equals {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .calculator {
+        padding: var(--spacing-lg) var(--spacing-xl);
+    }
+
+    .button {
+        font-size: 1.6rem;
+    }
+}
+
+/* ========== DARK MODE SUPPORT ========== */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #f0f0f0;
+        --calculator-bg: #ffffff;
+        --display-bg: #f5f5f5;
+        --button-bg: #e0e0e0;
+        --button-hover: #d0d0d0;
+        --button-active: #c0c0c0;
+    }
+
+    body {
+        background-color: var(--bg-color);
+    }
+}
+
+/* ========== ACCESSIBILITY ========== */
+.button:focus-visible {
+    outline: 3px solid var(--operator-bg);
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========== LANDSCAPE MODE ========== */
+@media (orientation: landscape) and (max-height: 500px) {
+    .app-header {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .app-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .calculator {
+        padding: var(--spacing-md);
+    }
+
+    .display {
+        min-height: 80px;
+        padding: var(--spacing-md);
+    }
+
+    .display-current {
+        font-size: 2rem;
+    }
+
+    .button {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+    body {
+        background: white;
+    }
+
+    .calculator {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}

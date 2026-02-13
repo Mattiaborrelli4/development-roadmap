@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Photo Gallery",
+    "slug": "photo-gallery",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Questa app ha bisogno di accedere alla fotocamera per scattare foto",
+        "NSPhotoLibraryUsageDescription": "Questa app ha bisogno di accedere alla galleria per selezionare foto",
+        "NSPhotoLibraryAddUsageDescription": "Questa app ha bisogno di salvare foto nella tua galleria"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_MEDIA_IMAGES"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-image-picker",
+      "expo-camera",
+      "expo-media-library"
+    ]
+  }
+}

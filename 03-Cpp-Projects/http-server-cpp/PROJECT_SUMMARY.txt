@@ -1,0 +1,258 @@
+================================================================================
+                    HTTP SERVER C++ - RIASSUNTO PROGETTO
+================================================================================
+
+📁 POSIZIONE PROGETTO
+   C:\Users\matti\Desktop\Project Ideas Portfolio\03-Cpp-Projects\http-server-cpp\
+
+================================================================================
+📁 STRUTTURA DEL PROGETTO
+================================================================================
+
+http-server-cpp/
+├── 📄 server.h                   # Header: classe HTTPServer
+├── 📄 server.cpp                 # Implementazione: socket, HTTP, file I/O
+├── 📄 thread_pool.h              # Header: classe ThreadPool
+├── 📄 thread_pool.cpp            # Implementazione: gestione thread workers
+├── 📄 main.cpp                   # Entry point, signal handlers, CLI
+│
+├── 📂 public/                    # Directory file statici
+│   ├── 📄 index.html            # Homepage con documentazione
+│   ├── 📄 styles.css            # CSS responsive
+│   └── 📄 script.js             # JavaScript lato client
+│
+├── 📄 README.md                  # Documentazione completa
+├── 📄 QUICKSTART.md              # Guida rapida
+├── 📄 CMakeLists.txt             # Build CMake cross-platform
+├── 📄 Makefile                   # Build GNU Make (Linux)
+├── 📄 build.bat                  # Build script MinGW (Windows)
+├── 📄 build-msvc.bat             # Build script MSVC (Windows)
+└── 📄 .gitignore                 # Ignora file di build
+
+================================================================================
+✨ CARATTERISTICHE IMPLEMENTATE
+================================================================================
+
+✅ Socket TCP Programming
+   - Bind su porta 8080 (configurabile)
+   - Listen con backlog SOMAXCONN
+   - Accept con dispatch al thread pool
+
+✅ HTTP/1.1 Protocol
+   - Request parser (METHOD PATH VERSION)
+   - URL decoding (%20, +, etc.)
+   - Response builder con header corretti
+   - Gestione status codes (200, 404, 500)
+
+✅ Multi-threading
+   - Thread pool con N worker threads
+   - Queue di task (std::queue)
+   - Condition variable per signaling
+   - Mutex per sincronizzazione
+   - Graceful shutdown
+
+✅ Static File Serving
+   - Lettura file binaria (ifstream)
+   - Content-Type corretto per estensione
+   - Supporto: .html, .css, .js, .png, .jpg, .gif, .svg, .json
+   - Auto index.html per directory
+   - Base path protection
+
+✅ Cross-platform
+   - Windows: Winsock2 (ws2_32.lib)
+   - Linux: sys/socket.h (pthread)
+   - C++17 standard
+
+================================================================================
+🔧 TECNOLOGIE UTILIZZATE
+================================================================================
+
+Linguaggio:     C++17
+Socket:         Winsock2.h / sys/socket.h
+Threading:      std::thread, std::mutex, std::condition_variable
+File I/O:       std::ifstream (binary)
+Container:      std::queue, std::map, std::vector
+String:        std::string, std::ostringstream
+
+================================================================================
+🚀 COMANDI DI COMPILAZIONE
+================================================================================
+
+Windows (MinGW):
+   build.bat
+
+Windows (MSVC):
+   build-msvc.bat
+
+Linux/macOS:
+   chmod +x build.sh && ./build.sh
+   # oppure
+   make
+
+CMake (Cross-platform):
+   mkdir build && cd build
+   cmake .. && cmake --build .
+
+================================================================================
+🎮 ESECUZIONE
+================================================================================
+
+Avvio base:
+   server.exe              # Windows
+   ./server                # Linux/macOS
+
+Configurazione:
+   --port 8080             # Porta (default: 8080)
+   --root ./public         # Web root (default: ./public)
+   --threads 4             # Worker threads (default: 4)
+   --help                  # Mostra aiuto
+
+Esempio completo:
+   ./server --port 3000 --root /var/www --threads 8
+
+================================================================================
+🌐 TEST
+================================================================================
+
+Browser:
+   http://localhost:8080
+
+curl:
+   curl http://localhost:8080
+   curl -I http://localhost:8080/styles.css
+
+PowerShell:
+   Invoke-WebRequest http://localhost:8080
+
+================================================================================
+📊 COMPONENTI PRINCIPALI
+================================================================================
+
+1. HTTPServer (server.h/cpp)
+   - Gestione socket TCP
+   - Accept loop
+   - Request parsing
+   - Response building
+   - File serving
+
+2. ThreadPool (thread_pool.h/cpp)
+   - N worker threads
+   - Queue di task
+   - Condition variable
+   - Graceful shutdown
+
+3. Main (main.cpp)
+   - Signal handlers (SIGINT, SIGTERM)
+   - CLI argument parsing
+   - Server initialization
+
+================================================================================
+📝 FORMATO HTTP
+================================================================================
+
+REQUEST:
+   GET /path HTTP/1.1\r\n
+   Host: localhost:8080\r\n
+   \r\n
+
+RESPONSE:
+   HTTP/1.1 200 OK\r\n
+   Content-Type: text/html\r\n
+   Content-Length: 1234\r\n
+   Connection: close\r\n
+   \r\n
+   [content]
+
+================================================================================
+🎯 STATUS CODES
+================================================================================
+
+200 OK           → File trovato e servito
+404 Not Found    → File non esistente
+500 Server Error → Errore interno
+
+================================================================================
+📄 CONTENT TYPES SUPPORTATI
+================================================================================
+
+.html, .htm     → text/html
+.css            → text/css
+.js             → application/javascript
+.json           → application/json
+.png            → image/png
+.jpg, .jpeg     → image/jpeg
+.gif            → image/gif
+.svg            → image/svg+xml
+.ico            → image/x-icon
+.txt            → text/plain
+.pdf            → application/pdf
+.xml            → application/xml
+
+================================================================================
+🔐 SICUREZZA
+================================================================================
+
+⚠️  NOTA: Questo è un progetto educativo.
+
+Per produzione:
+   - Validazione path completa (path traversal)
+   - Limiti dimensione request
+   - Timeout connessioni
+   - Rate limiting
+   - Logging accessi
+   - HTTPS/TLS
+
+================================================================================
+📚 RISORSE
+================================================================================
+
+Documentazione:
+   - README.md     → Documentazione tecnica completa
+   - QUICKSTART.md → Guida rapida
+
+Codice:
+   - server.h/cpp         → Socket + HTTP + File serving
+   - thread_pool.h/cpp    → Multi-threading
+   - main.cpp             → Entry point + CLI
+
+Build:
+   - build.bat            → MinGW (Windows)
+   - build-msvc.bat       → MSVC (Windows)
+   - build.sh             → GCC (Linux/macOS)
+   - Makefile             → GNU Make
+   - CMakeLists.txt       → CMake
+
+================================================================================
+✅ VERIFICA FUNZIONAMENTO
+================================================================================
+
+1. Compilazione:     Success (nessun errore)
+2. Avvio:            Server listening su porta 8080
+3. Browser:          Homepage caricata correttamente
+4. CSS/JS:           Stili e script funzionanti
+5. Console:          Log delle richieste visibili
+6. 404:              Pagina non trovata restituisce errore
+
+================================================================================
+🎓 COSA IMPARATO
+================================================================================
+
+✓ Socket TCP programming
+✓ HTTP/1.1 protocol implementation
+✓ Multi-threading con std::thread
+✓ Thread pool pattern
+✓ Mutex e condition variables
+✓ Cross-platform development
+✓ File I/O binary mode
+✓ String manipulation
+✓ Signal handling
+✓ CLI argument parsing
+
+================================================================================
+👨‍💻 AUTORE
+================================================================================
+
+Progetto dimostrativo per portfolio.
+Socket TCP + HTTP Protocol + Multi-threading in C++17
+
+================================================================================

@@ -1,0 +1,326 @@
+# Security Audit Tool - Pattern di Vulnerabilità
+# File di configurazione per il rilevamento di vulnerabilità comuni
+# SCOPO EDUCATIVO/DIFENSIVO
+
+version: "1.0.0"
+last_updated: "2025-02-12"
+
+# Patterns SQL Injection
+sql_injection:
+  severity: "CRITICAL"
+  cwe: "CWE-89"
+  description: "SQL Injection - Consente di manipolare query SQL non parametrizzate"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - '\.execute\(f?"[^"]*\{[^}]+\}[^"]*"\)'
+        - '\.execute\(f?\'[^\']*\{[^}]+\}[^\']*\'\)'
+        - '\.execute\(["\'].*\+.*["\']\)'
+        - '\.execute\(["\'].*%.*["\']\)'
+        - '\.execute\(["\'].*format\(.*\).*["\']\)'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'query\(`.*\$\{.*\}.*`\)'
+        - 'query\(".*".*\+.*"."\)'
+        - '\.query\(.*\+.*\)'
+        - 'db\.query\(`.*\$\{.*\}`\)'
+    # PHP patterns
+    - language: "php"
+      patterns:
+        - 'mysql_query\(".*".*\$.*"."\)'
+        - 'pg_query\(".*".*\$.*"."\)'
+        - '\$db->query\(".*".*\$.*"."\)'
+  safe_examples:
+    - "cursor.execute('SELECT * FROM users WHERE id=%s', (user_id,))"
+    - "db.query('SELECT * FROM users WHERE id=?', [userId])"
+  references:
+    - "https://owasp.org/www-community/attacks/SQL_Injection"
+    - "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+
+# Patterns XSS (Cross-Site Scripting)
+xss:
+  severity: "HIGH"
+  cwe: "CWE-79"
+  description: "XSS - Cross-Site Scripting, output non sanitizzato"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'return f["\']<[^>]*>\{[^}]+\}<[^>]*>["\']'
+        - 'HttpResponse\(.*user_input.*\)'
+        - 'render\(.*context=.*request\.(GET|POST)\)'
+        - 'return f["\'].*\{.*request\.(GET|POST)\..*\}.*["\']'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'innerHTML\s*=\s*.*\+'
+        - 'document\.write\('
+        - '\.html\(.*user.*\)'
+        - 'eval\('
+        - 'dangerouslySetInnerHTML'
+        - 'insertAdjacentHTML'
+    # PHP patterns
+    - language: "php"
+      patterns:
+        - 'echo \$[A-Za-z_]+;'
+        - 'print \$[A-Za-z_]+;'
+        - '<?= \$[A-Za-z_]+ ?>'
+  safe_examples:
+    - "return HttpResponse.escape(user_input)"
+    - "element.textContent = user_input"
+    - "{{ user_input|escape }}"
+  references:
+    - "https://owasp.org/www-community/attacks/xss/"
+    - "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+
+# Hardcoded Credentials
+hardcoded_credentials:
+  severity: "CRITICAL"
+  cwe: "CWE-798"
+  description: "Credenziali hardcoded nel codice sorgente"
+  patterns:
+    # Password patterns
+    - language: "all"
+      patterns:
+        - '(password|passwd|pwd)\s*=\s*["\'][^"\']{4,}["\']'
+        - '(api_key|apikey|api-key)\s*=\s*["\'][^"\']{20,}["\']'
+        - '(secret|secret_key)\s*=\s*["\'][^"\']{20,}["\']'
+        - '(token|access_token)\s*=\s*["\'][^"\']{30,}["\']'
+        - 'Bearer\s+[A-Za-z0-9]{32,}'
+        - '(aws_access_key|aws_secret)\s*=\s*["\'][^"\']{16,}["\']'
+        - '(private_key|privatekey)\s*=\s*["\']-----BEGIN'
+        - '(db_password|dbpass)\s*=\s*["\'][^"\']{4,}["\']'
+        - 'mongodb://.*:.*@'
+        - 'mysql://.*:.*@'
+        - 'postgres://.*:.*@'
+        - '(ghp_|gho_|ghu_|ghs_|ghr_)'
+        - 'AKIA[0-9A-Z]{16}'  # AWS Access Key
+        - 'AIza[0-9A-Za-z\\-_]{35}'  # Google API Key
+        - 'sk_live_[0-9a-zA-Z]{24,}'  # Stripe Live Key
+  safe_examples:
+    - "password = os.environ.get('DB_PASSWORD')"
+    - "api_key = config.get('api_key')"
+  references:
+    - "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html"
+
+# Weak Cryptography
+weak_crypto:
+  severity: "MEDIUM"
+  cwe: "CWE-327"
+  description: "Uso di algoritmi crittografici deboli o deprecati"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'import\s+hashlib.*\n.*\.md5\('
+        - 'import\s+hashlib.*\n.*\.sha1\('
+        - 'from\s+Crypto\.Cipher\s+import\s+DES'
+        - 'from\s+Crypto\.Cipher\s+import\s+ARC4'
+        - 'import\s+md5'
+        - 'import\s+sha'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'require\(["\']crypto["\']\).*\.createHash\(["\']md5["\']'
+        - 'require\(["\']crypto["\']\).*\.createHash\(["\']sha1["\']'
+        - 'crypto\.createHash\(["\']md5["\']'
+        - 'crypto\.createHash\(["\']sha1["\']'
+        - 'Math\.random\(\)'  # Per generazione di numeri casuali non sicuri
+  safe_examples:
+    - "hashlib.sha256(data.encode()).hexdigest()"
+        - "crypto.createHash('sha256')"
+        - "crypto.randomBytes(32)"
+  references:
+    - "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+    - "https://csrc.nist.gov/projects/hash-functions"
+
+# Input Validation
+input_validation:
+  severity: "MEDIUM"
+  cwe: "CWE-20"
+  description: "Mancanza di validazione dell'input utente"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'request\.(GET|POST|FILES)\[["\'].*["\']\](?!\s*\.(validate|sanitize|clean))'
+        - 'flask\.request\.form\[["\'].*["\']\](?!\s*\.(validate|sanitize))'
+        - 'input\(["\'].*["\']\)(?!\s*\.)'
+        - 'sys\.argv\['
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'req\.query\.[a-zA-Z_]+(?!\s*\.)'
+        - 'req\.body\.[a-zA-Z_]+(?!\s*\.)'
+        - 'req\.params\.[a-zA-Z_]+(?!\s*\.)'
+        - 'document\.getElementById\(["\'].*["\']\)\.value(?!\s*\.)'
+        - '$\(["\'].*["\']\)\.val\(\)(?!\s*\.)'
+  safe_examples:
+    - "user_id = int(request.GET.get('id', 0))"
+        - "username = escape(req.body.username)"
+  references:
+    - "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html"
+
+# Insecure Random
+insecure_random:
+  severity: "LOW"
+  cwe: "CWE-330"
+  description: "Uso di generatori di numeri casuali non crittograficamente sicuri"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'import\s+random\n.*random\.random\(\)'
+        - 'import\s+random\n.*random\.randint\('
+        - 'import\s+random\n.*random\.choice\('
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'Math\.random\(\)'
+        - 'Math\.rand\(\)'
+  safe_examples:
+    - "secrets.token_bytes(32)"
+        - "crypto.randomBytes(32)"
+        - "secrets.randbelow(100)"
+  references:
+    - "https://csrc.nist.gov/publications/detail/sp/800-90a/rev-1/final"
+
+# Path Traversal
+path_traversal:
+  severity: "HIGH"
+  cwe: "CWE-22"
+  description: "Path Traversal - Accesso non autorizzato al filesystem"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'open\(.*request\.(GET|POST).*\)'
+        - 'open\(.*\+\s*["\']\.\.\/'
+        - 'Path\(.*request\.(GET|POST)\)'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'fs\.readFile\(\s*req\.'
+        - 'fs\.readFileSync\(\s*req\.'
+        - 'require\(["\']fs["\']\).*readFile\(.*req\.'
+  safe_examples:
+    - "safe_path = os.path.normpath('/var/data/' + filename)"
+        - "if not safe_path.startswith('/var/data/'): raise Error()"
+  references:
+    - "https://owasp.org/www-community/attacks/Path_Traversal"
+
+# Command Injection
+command_injection:
+  severity: "CRITICAL"
+  cwe: "CWE-77"
+  description: "Command Injection - Esecuzione di comandi arbitrari"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'os\.system\(.*request\.'
+        - 'os\.system\(.*user_'
+        - 'subprocess\.call\(.*shell=True.*request\.'
+        - 'subprocess\.Popen\(.*shell=True.*request\.'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'require\(["\']child_process["\']\)\.exec\(.*req\.'
+        - 'exec\(.*req\.'
+        - 'spawn\(.*shell.*req\.'
+    # PHP patterns
+    - language: "php"
+      patterns:
+        - 'exec\(\$.*\)'
+        - 'system\(\$.*\)'
+        - 'shell_exec\(\$.*\)'
+        - 'passthru\(\$.*\)'
+        - 'popen\(\$.*\)'
+  safe_examples:
+    - "subprocess.run(['ls', '-l'], check=True)"
+        - "exec(['ls', '-l'], (error, stdout) => {})"
+  references:
+    - "https://owasp.org/www-community/attacks/Command_Injection"
+
+# Insecure Deserialization
+insecure_deserialization:
+  severity: "HIGH"
+  cwe: "CWE-502"
+  description: "Deserializzazione non sicura di dati non fidati"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'pickle\.loads\(.*request\.(GET|POST|FILES)\)'
+        - 'pickle\.load\(.*request\.(GET|POST|FILES)\)'
+        - 'cPickle\.loads\(.*request\.'
+        - 'yaml\.load\(.*request\.(GET|POST)\)'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'JSON\.parse\(.*req\.body.*\)(?!\s*\.validator)'
+  safe_examples:
+    - "json.loads(user_data)"
+        - "yaml.safe_load(data)"
+  references:
+    - "https://owasp.org/www-community/vulnerabilities/Insecure_Deserialization"
+
+# LDAP Injection
+ldap_injection:
+  severity: "HIGH"
+  cwe: "CWE-90"
+  description: "LDAP Injection - Manipolazione di query LDAP"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'ldap\.search\(".*".*\+.*"."\)'
+        - 'ldap\.search\(".*".*\*.*"."\)'
+    # PHP patterns
+    - language: "php"
+      patterns:
+        - 'ldap_search\(\$.*\["\'].*["\']\s*\.\s*\$'
+  safe_examples:
+    - "ldap.search('uid=' + ldap.filter_escape(user_id) + ',ou=users')"
+  references:
+    - "https://owasp.org/www-community/attacks/LDAP_Injection"
+
+# SSRF (Server-Side Request Forgery)
+ssrf:
+  severity: "HIGH"
+  cwe: "CWE-918"
+  description: "SSRF - Richiesta lato server forgiata"
+  patterns:
+    # Python patterns
+    - language: "python"
+      patterns:
+        - 'requests\.(get|post|put|delete)\(.*request\.(GET|POST)\)'
+        - 'urllib\.request\.urlopen\(.*request\.(GET|POST)\)'
+        - 'urllib\.request\.Request\(.*request\.(GET|POST)\)'
+    # JavaScript patterns
+    - language: "javascript"
+      patterns:
+        - 'axios\.(get|post)\(.*req\.(query|body)\)'
+        - 'fetch\(.*req\.(query|body)\)'
+  safe_examples:
+    - "requests.get(url, headers={'User-Agent': 'MyApp'})"
+        - "# Convalida URL contro whitelist"
+  references:
+    - "https://owasp.org/www-community/attacks/Server_Side_Request_Forgery"
+
+# Security Headers
+missing_security_headers:
+  severity: "LOW"
+  cwe: "CWE-693"
+  description: "Header di sicurezza mancanti nella risposta HTTP"
+  patterns:
+    # Python Flask
+    - language: "python"
+      patterns:
+        - '@app\.route.*\n(?=.*(?!(X-Frame-Options|X-Content-Type|Content-Security-Policy)))'
+  safe_examples:
+    - "@app.after_request\n    def set_security_headers(response):\n        response.headers['X-Frame-Options'] = 'DENY'\n        return response"
+  references:
+    - "https://owasp.org/www-project-secure-headers/"

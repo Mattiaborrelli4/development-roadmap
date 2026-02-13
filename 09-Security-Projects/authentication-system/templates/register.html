@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}Registrati - Secure Auth{% endblock %}
+
+{% block content %}
+    <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+            <line x1="20" y1="8" x2="20" y2="14"/>
+            <line x1="23" y1="11" x2="17" y2="11"/>
+        </svg>
+    </div>
+
+    <h1>Crea Account</h1>
+    <p class="subtitle">Unisciti alla nostra piattaforma sicura</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'success' if category == 'success' else 'error' }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form id="registerForm" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="nome@esempio.com"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="first_name">Nome (opzionale)</label>
+            <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                autocomplete="given-name"
+                placeholder="Mario"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Cognome (opzionale)</label>
+            <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                autocomplete="family-name"
+                placeholder="Rossi"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="new-password"
+                placeholder="••••••••"
+            >
+            <div class="password-strength">
+                <div class="password-strength-bar">
+                    <div class="password-strength-fill" id="strengthBar"></div>
+                </div>
+                <div class="password-strength-text" id="strengthText"></div>
+            </div>
+
+            <div class="requirements">
+                <strong>Requisiti password:</strong>
+                <ul>
+                    <li id="req-length">Almeno 12 caratteri</li>
+                    <li id="req-upper">Una maiuscola</li>
+                    <li id="req-lower">Una minuscola</li>
+                    <li id="req-digit">Un numero</li>
+                    <li id="req-special">Un carattere speciale (!@#$%...)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm_password">Conferma Password</label>
+            <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                required
+                autocomplete="new-password"
+                placeholder="••••••••"
+            >
+        </div>
+
+        <button type="submit" class="btn">Crea Account</button>
+    </form>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="links">
+        Hai già un account? <a href="{{ url_for('auth.login')">Accedi</a>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirm_password');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        const form = document.getElementById('registerForm');
+        const loading = document.getElementById('loading');
+
+        // Requisiti
+        const requirements = {
+            length: /.{12,}/,
+            upper: /[A-Z]/,
+            lower: /[a-z]/,
+            digit: /\d/,
+            special: /[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/
+        };
+
+        // Verifica password in tempo reale
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            let score = 0;
+
+            // Verifica requisiti
+            for (const [key, regex] of Object.entries(requirements)) {
+                const element = document.getElementById(`req-${key}`);
+                if (regex.test(password)) {
+                    element.style.color = '#10b981';
+                    score++;
+                } else {
+                    element.style.color = '#666';
+                }
+            }
+
+            // Aggiungi barra forza
+            if (password.length === 0) {
+                strengthBar.className = 'password-strength-fill';
+                strengthText.textContent = '';
+            } else if (score < 3) {
+                strengthBar.className = 'password-strength-fill password-strength-weak';
+                strengthText.textContent = 'Debole';
+            } else if (score < 4) {
+                strengthBar.className = 'password-strength-fill password-strength-fair';
+                strengthText.textContent = 'Discreta';
+            } else if (score < 5) {
+                strengthBar.className = 'password-strength-fill password-strength-good';
+                strengthText.textContent = 'Buona';
+            } else {
+                strengthBar.className = 'password-strength-fill password-strength-strong';
+                strengthText.textContent = 'Forte!';
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const password = passwordInput.value;
+            const confirm = confirmInput.value;
+
+            // Verifica corrispondenza
+            if (password !== confirm) {
+                showAlert('Le password non corrispondono', 'error');
+                return;
+            }
+
+            // Verifica requisiti
+            let valid = true;
+            for (const [key, regex] of Object.entries(requirements)) {
+                if (!regex.test(password)) {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (!valid) {
+                showAlert('La password non soddisfa tutti i requisiti', 'error');
+                return;
+            }
+
+            loading.classList.add('active');
+
+            try {
+                const response = await fetchWithCSRF('/auth/register', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: password,
+                        first_name: document.getElementById('first_name').value,
+                        last_name: document.getElementById('last_name').value
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showAlert('Registrazione completata! Controlla la tua email.', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/auth/login';
+                    }, 2000);
+                } else {
+                    showAlert(data.errors?.join(', ') || 'Registrazione fallita', 'error');
+                }
+            } catch (error) {
+                showAlert('Errore di connessione', 'error');
+            } finally {
+                loading.classList.remove('active');
+            }
+        });
+    </script>
+{% endblock %}

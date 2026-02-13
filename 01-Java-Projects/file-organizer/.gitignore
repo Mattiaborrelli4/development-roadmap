@@ -1,0 +1,27 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Log
+organizer.log
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Build
+out/
+build/
+target/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db

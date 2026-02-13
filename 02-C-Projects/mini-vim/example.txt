@@ -1,0 +1,25 @@
+Mini Vim - File di Esempio
+==========================================
+
+Questo è un file di esempio per testare Mini Vim!
+
+Caratteristiche da testare:
+- Linee multiple
+- Movimento del cursore (h, j, k, l)
+- Inserimento di nuovo testo (i)
+- Cancellazione (BACKSPACE)
+- Salvataggio (:w)
+
+Prova a modificare questo file con mini-vim:
+1. Carica il file: ./mini-vim example.txt
+2. Muovi il cursore con h,j,k,l
+3. Premi 'i' per entrare in modalità INSERT
+4. Modifica il testo
+5. Premi ESC per tornare a NORMAL
+6. Salva con :w
+7. Esci con :q
+
+Buon divertimento!
+
+==========================================
+Fine del file di esempio

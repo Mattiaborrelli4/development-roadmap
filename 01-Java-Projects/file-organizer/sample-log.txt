@@ -1,0 +1,42 @@
+[2026-02-12 15:30:45] [INFO] === AVVIO FILE ORGANIZER ===
+[2026-02-12 15:30:45] [INFO] Directory monitorata: C:\Users\matti\Downloads
+[2026-02-12 15:30:45] [INFO] Regole caricate: 45 estensioni configurate
+[2026-02-12 15:30:45] [INFO] Creata cartella: Documenti
+[2026-02-12 15:30:45] [INFO] Creata cartella: Immagini
+[2026-02-12 15:30:45] [INFO] Creata cartella: Video
+[2026-02-12 15:30:45] [INFO] Creata cartella: Musica
+[2026-02-12 15:30:45] [INFO] Creata cartella: Archivi
+[2026-02-12 15:30:45] [INFO] Creata cartella: Codice
+[2026-02-12 15:30:45] [INFO] Directory registrata per il monitoraggio: C:\Users\matti\Downloads
+[2026-02-12 15:30:45] [INFO] Organizzazione file esistenti...
+[2026-02-12 15:30:46] [INFO] [SPSTATO] manuale_utente.pdf -> Documenti/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] vacanza_2023.jpg -> Immagini/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] presentation.pptx -> Documenti/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] song.mp3 -> Musica/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] movie.mkv -> Video/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] backup.zip -> Archivi/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] notes.txt -> Documenti/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] script.py -> Codice/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] photo.png -> Immagini/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] report.docx -> Documenti/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] album.flac -> Musica/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] clip.mp4 -> Video/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] data.json -> Codice/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] main.java -> Codice/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] budget.xlsx -> Documenti/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] tutorial.gif -> Immagini/
+[2026-02-12 15:30:46] [INFO] [SPSTATO] podcast.mp3 -> Musica/
+[2026-02-12 15:30:46] [INFO] File esistenti organizzati: 18
+[2026-02-12 15:30:46] [INFO] Monitoraggio attivo. Premi CTRL+C per terminare.
+[2026-02-12 15:31:20] [INFO] Nuovo file rilevato: documento_contratto.pdf
+[2026-02-12 15:31:20] [INFO] [SPSTATO] documento_contratto.pdf -> Documenti/
+[2026-02-12 15:32:15] [INFO] Nuovo file rilevato: screenshot_app.png
+[2026-02-12 15:32:15] [INFO] [SPSTATO] screenshot_app.png -> Immagini/
+[2026-02-12 15:33:45] [INFO] Nuovo file rilevato: unknown_file.xyz
+[2026-02-12 15:33:45] [WARNING] Nessuna regola per estensione .xyz (unknown_file.xyz)
+[2026-02-12 15:35:00] [INFO] Nuovo file rilevato: foto.jpg
+[2026-02-12 15:35:00] [INFO] [SPSTATO] foto.jpg -> Immagini/
+[2026-02-12 15:35:01] [INFO] Nuovo file rilevato: foto.jpg
+[2026-02-12 15:35:01] [INFO] [SPSTATO] foto.jpg -> Immagini/
+[2026-02-12 15:35:02] [INFO] Nuovo file rilevato: foto.jpg
+[2026-02-12 15:35:02] [INFO] [SPSTATO] foto_1.jpg -> Immagini/

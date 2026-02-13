@@ -1,0 +1,26 @@
+# Compiled executable
+*.exe
+mini-zip
+*.out
+
+# Object files
+*.o
+*.obj
+
+# Compressed test files
+*.rle
+
+# Restored test files
+*-restored.*
+*.dec
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

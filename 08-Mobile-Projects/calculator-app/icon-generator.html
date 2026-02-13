@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore Icone Calcolatrice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .icon-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .icon-item svg {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .info h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generatore Icone Calcolatrice</h1>
+
+        <div class="info">
+            <h3>Come usare queste icone:</h3>
+            <p><strong>Opzione 1 - Online (Consigliato):</strong></p>
+            <ol>
+                <li>Vai su <a href="https://favicon.io" target="_blank">favicon.io</a> o <a href="https://realfavicongenerator.net" target="_blank">RealFaviconGenerator</a></li>
+                <li>Carica un'immagine o usa il testo "🧮"</li>
+                <li>Scarica tutte le dimensioni richieste</li>
+                <li>Sostituisci i file nella cartella dell'app</li>
+            </ol>
+            <p><strong>Opzione 2 - Convertitore SVG:</strong></p>
+            <ol>
+                <li>Fai click destro su un'icona qui sotto e salva come SVG</li>
+                <li>Usa un convertitore online come <a href="https://convertio.co/it/svg-png/" target="_blank">Convertio</a></li>
+                <li>Converti in PNG nelle dimensioni richieste</li>
+            </ol>
+            <p><strong>Opzione 3 - Canva / Photoshop:</strong></p>
+            <ol>
+                <li>Crea un'immagine 512x512px</li>
+                <li>Usa lo sfondo #1e1e1e e il simbolo 🧮 o ➕</li>
+                <li>Esporta in diverse dimensioni</li>
+            </ol>
+        </div>
+
+        <h2>Anteprima Icone</h2>
+        <p>Clicca su un'icona per scaricarla come SVG, poi convertila in PNG:</p>
+
+        <div class="icon-preview">
+            <div class="icon-item">
+                <h3>Icona 192x192</h3>
+                <svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="192" height="192" rx="40" fill="#1e1e1e"/>
+                    <text x="96" y="130" font-size="80" text-anchor="middle" fill="#ff9f0a" font-family="Arial">🧮</text>
+                </svg>
+                <br><br>
+                <button onclick="downloadIcon('192')">Scarica SVG</button>
+            </div>
+
+            <div class="icon-item">
+                <h3>Icona 512x512</h3>
+                <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="512" height="512" rx="100" fill="#1e1e1e"/>
+                    <text x="256" y="350" font-size="220" text-anchor="middle" fill="#ff9f0a" font-family="Arial">🧮</text>
+                </svg>
+                <br><br>
+                <button onclick="downloadIcon('512')">Scarica SVG</button>
+            </div>
+
+            <div class="icon-item">
+                <h3>Icona Calcolatrice (Vettoriale)</h3>
+                <svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="192" height="192" rx="40" fill="#1e1e1e"/>
+                    <rect x="30" y="20" width="132" height="40" rx="8" fill="#2d2d2d"/>
+                    <text x="96" y="48" font-size="24" text-anchor="middle" fill="#ffffff" font-family="monospace">123.45</text>
+                    <circle cx="50" cy="80" r="14" fill="#333"/>
+                    <circle cx="96" cy="80" r="14" fill="#333"/>
+                    <circle cx="142" cy="80" r="14" fill="#ff9f0a"/>
+                    <circle cx="50" cy="115" r="14" fill="#333"/>
+                    <circle cx="96" cy="115" r="14" fill="#333"/>
+                    <circle cx="142" cy="115" r="14" fill="#ff9f0a"/>
+                    <circle cx="50" cy="150" r="14" fill="#333"/>
+                    <circle cx="96" cy="150" r="14" fill="#333"/>
+                    <circle cx="142" cy="150" r="14" fill="#ff9f0a"/>
+                </svg>
+                <br><br>
+                <button onclick="downloadIcon('calc')">Scarica SVG</button>
+            </div>
+
+            <div class="icon-item">
+                <h3>Icona Minimal (+)</h3>
+                <svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="192" height="192" rx="40" fill="#ff9f0a"/>
+                    <rect x="85" y="40" width="22" height="112" rx="11" fill="#ffffff"/>
+                    <rect x="40" y="85" width="112" height="22" rx="11" fill="#ffffff"/>
+                </svg>
+                <br><br>
+                <button onclick="downloadIcon('plus')">Scarica SVG</button>
+            </div>
+        </div>
+
+        <div class="info" style="background: #fff3cd;">
+            <h3>⚠️ Importante</h3>
+            <p>Per un'app PWA funzionante, hai bisogno di questi file icona come PNG:</p>
+            <ul>
+                <li>icon-72.png (72x72px)</li>
+                <li>icon-96.png (96x96px)</li>
+                <li>icon-128.png (128x128px)</li>
+                <li>icon-144.png (144x144px)</li>
+                <li>icon-152.png (152x152px)</li>
+                <li>icon-192.png (192x192px) - Richiesto</li>
+                <li>icon-384.png (384x384px)</li>
+                <li>icon-512.png (512x512px) - Richiesto</li>
+            </ul>
+            <p><strong>Metodo più veloce:</strong> Usa un servizio online come favicon.io e genera tutte le icone contemporaneamente!</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadIcon(type) {
+            let svg, filename;
+
+            switch(type) {
+                case '192':
+                    svg = `<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="192" height="192" rx="40" fill="#1e1e1e"/>
+                        <text x="96" y="130" font-size="80" text-anchor="middle" fill="#ff9f0a" font-family="Arial">🧮</text>
+                    </svg>`;
+                    filename = 'icon-192.svg';
+                    break;
+                case '512':
+                    svg = `<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="512" height="512" rx="100" fill="#1e1e1e"/>
+                        <text x="256" y="350" font-size="220" text-anchor="middle" fill="#ff9f0a" font-family="Arial">🧮</text>
+                    </svg>`;
+                    filename = 'icon-512.svg';
+                    break;
+                case 'calc':
+                    svg = `<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="192" height="192" rx="40" fill="#1e1e1e"/>
+                        <rect x="30" y="20" width="132" height="40" rx="8" fill="#2d2d2d"/>
+                        <text x="96" y="48" font-size="24" text-anchor="middle" fill="#ffffff" font-family="monospace">123.45</text>
+                        <circle cx="50" cy="80" r="14" fill="#333"/>
+                        <circle cx="96" cy="80" r="14" fill="#333"/>
+                        <circle cx="142" cy="80" r="14" fill="#ff9f0a"/>
+                        <circle cx="50" cy="115" r="14" fill="#333"/>
+                        <circle cx="96" cy="115" r="14" fill="#333"/>
+                        <circle cx="142" cy="115" r="14" fill="#ff9f0a"/>
+                        <circle cx="50" cy="150" r="14" fill="#333"/>
+                        <circle cx="96" cy="150" r="14" fill="#333"/>
+                        <circle cx="142" cy="150" r="14" fill="#ff9f0a"/>
+                    </svg>`;
+                    filename = 'icon-calculator.svg';
+                    break;
+                case 'plus':
+                    svg = `<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="192" height="192" rx="40" fill="#ff9f0a"/>
+                        <rect x="85" y="40" width="22" height="112" rx="11" fill="#ffffff"/>
+                        <rect x="40" y="85" width="112" height="22" rx="11" fill="#ffffff"/>
+                    </svg>`;
+                    filename = 'icon-plus.svg';
+                    break;
+            }
+
+            const blob = new Blob([svg], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

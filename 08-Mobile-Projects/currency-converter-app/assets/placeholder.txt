@@ -1,0 +1,12 @@
+Questo file è un placeholder per gli asset dell'app.
+
+Per un'app Expo completa, aggiungi:
+- icon.png (1024x1024)
+- adaptive-icon.png (1024x1024)
+- favicon.png (48x48)
+- splash.png (1284x2778)
+
+Puoi generare questi asset utilizzando:
+https://icon.kitchen/ o https://expo.dev/eas
+
+In alternativa, rimuovi i riferimenti agli asset in app.json se non necessari.

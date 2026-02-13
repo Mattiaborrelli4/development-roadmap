@@ -1,0 +1,8 @@
+# File Monitor - Dipendenze
+# Sistema di Monitoraggio File System
+
+# Libreria principale per il monitoraggio del file system
+watchdog>=3.0.0
+
+# Opzionale: Per colorazione output
+colorama>=0.4.6

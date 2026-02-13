@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Meteo - Apprendimento JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js per la visualizzazione dei dati -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Intestazione -->
+        <header>
+            <h1>🌤️ Dashboard Meteo</h1>
+            <p class="subtitle">Progetto educativo - JavaScript ES6+, API Fetch, Async/Await</p>
+        </header>
+
+        <!-- Controlli principali -->
+        <section class="controls">
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Inserisci nome città (es. Roma, Milano, Napoli)"
+                    autocomplete="off"
+                >
+                <button id="searchBtn" class="btn btn-primary">🔍 Cerca</button>
+                <button id="locationBtn" class="btn btn-secondary" title="Usa la tua posizione">📍 Geolocalizzazione</button>
+            </div>
+        </section>
+
+        <!-- Messaggi di stato -->
+        <div id="statusMessage" class="status-message hidden"></div>
+
+        <!-- Meteo corrente -->
+        <section id="currentWeather" class="weather-card hidden">
+            <div class="weather-header">
+                <h2 id="cityName">--</h2>
+                <span id="weatherDate" class="date">--</span>
+            </div>
+            <div class="weather-main">
+                <div class="temperature">
+                    <span id="temperature">--</span>°C
+                </div>
+                <div class="weather-icon">
+                    <img id="weatherIcon" src="" alt="Icona meteo">
+                </div>
+                <div class="description">
+                    <p id="weatherDescription">--</p>
+                    <p class="feels-like">Percepita: <span id="feelsLike">--</span>°C</p>
+                </div>
+            </div>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="label">Umidità:</span>
+                    <span id="humidity">--</span>%
+                </div>
+                <div class="detail-item">
+                    <span class="label">Vento:</span>
+                    <span id="windSpeed">--</span> km/h
+                </div>
+                <div class="detail-item">
+                    <span class="label">Pressione:</span>
+                    <span id="pressure">--</span> hPa
+                </div>
+                <div class="detail-item">
+                    <span class="label">Visibilità:</span>
+                    <span id="visibility">--</span> km
+                </div>
+            </div>
+            <button id="saveCityBtn" class="btn btn-save">💾 Salva Città</button>
+        </section>
+
+        <!-- Grafico temperatura -->
+        <section id="chartSection" class="chart-container hidden">
+            <h3>📈 Previsione Temperatura (24 ore)</h3>
+            <canvas id="temperatureChart"></canvas>
+        </section>
+
+        <!-- Città salvate -->
+        <section id="savedCities" class="saved-cities hidden">
+            <h3>🏙️ Le Tue Città</h3>
+            <div id="savedCitiesList" class="cities-grid"></div>
+        </section>
+
+        <!-- Sezione educativa -->
+        <section class="educational-section">
+            <details>
+                <summary>📚 Concetti JavaScript Imparati</summary>
+                <div class="educational-content">
+                    <h4>1. Fetch API</h4>
+                    <p>La <code>fetch()</code> API è un'interfaccia moderna per fare richieste HTTP. Restituisce una Promise che risolve con l'oggetto Response.</p>
+                    <pre><code>// Sintassi base di fetch
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Errore:', error));</code></pre>
+
+                    <h4>2. Async/Await</h4>
+                    <p>Le parole chiave <code>async</code> e <code>await</code> rendono il codice asincrono più leggibile, simile al codice sincrono.</p>
+                    <pre><code>// Stesso esempio con async/await
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Errore:', error);
+  }
+}</code></pre>
+
+                    <h4>3. LocalStorage</h4>
+                    <p>Il localStorage permette di salvare dati nel browser in modo persistente. I dati rimangono anche dopo la chiusura del browser.</p>
+                    <pre><code>// Salvare dati
+localStorage.setItem('key', 'value');
+
+// Recuperare dati
+const data = localStorage.getItem('key');
+
+// Rimuovere dati
+localStorage.removeItem('key');
+
+// Nota: Salva solo stringhe! Per oggetti usa JSON.stringify/parse</code></pre>
+
+                    <h4>4. Arrow Functions</h4>
+                    <p>Una sintassi concisa per definire funzioni, eredita il valore di <code>this</code> dal contesto circostante.</p>
+                    <pre><code>// Funzione tradizionale
+function add(a, b) {
+  return a + b;
+}
+
+// Arrow function
+const add = (a, b) => a + b;</code></pre>
+
+                    <h4>5. Event Listeners</h4>
+                    <p>Gli event listeners permettono di reagire alle interazioni dell'utente.</p>
+                    <pre><code>button.addEventListener('click', (event) => {
+  console.log('Button clicked!');
+  event.preventDefault(); // Previene il comportamento di default
+});</code></pre>
+
+                    <h4>6. Template Literals</h4>
+                    <p>Permettono di inserire espressioni dentro stringhe usando backticks e ${}.</p>
+                    <pre><code>const name = 'Mario';
+const greeting = `Ciao, ${name}!`; // "Ciao, Mario!"</code></pre>
+
+                    <h4>7. Destructuring</h4>
+                    <p>Estrae proprietà da oggetti o elementi da array in modo conciso.</p>
+                    <pre><code>// Object destructuring
+const person = { name: 'Mario', age: 30 };
+const { name, age } = console.log(name); // "Mario"
+
+// Array destructuring
+const numbers = [1, 2, 3];
+const [first, second] = numbers;
+console.log(first); // 1</code></pre>
+                </div>
+            </details>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>💡 Progetto educativo per imparare JavaScript moderno</p>
+            <p>Dati meteo da <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a></p>
+        </footer>
+    </div>
+
+    <!-- Script principale -->
+    <script src="app.js"></script>
+</body>
+</html>

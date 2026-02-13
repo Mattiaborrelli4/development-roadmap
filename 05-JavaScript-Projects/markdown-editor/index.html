@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Markdown Editor</h1>
+            <p>Scrivi in Markdown, guarda l'anteprima in tempo reale</p>
+        </header>
+
+        <div class="toolbar">
+            <button id="exportBtn" class="btn-export">
+                📥 Esporta HTML
+            </button>
+            <button id="clearBtn" class="btn-clear">
+                🗑️ Cancella
+            </button>
+        </div>
+
+        <div class="editor-container">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>✏️ Editor</h2>
+                    <span class="status" id="saveStatus">Salvato</span>
+                </div>
+                <textarea
+                    id="markdownInput"
+                    placeholder="# Scrivi qui il tuo Markdown...
+
+## Esempio di utilizzo
+
+Questo editor supporta:
+
+- **Grassetto** con **testo**
+- *Corsivo* con *testo*
+- `Codice inline` con backtick
+
+### Elenchi puntati
+- Primo elemento
+- Secondo elemento
+  - Sottoelemento
+- Terzo elemento
+
+Prova a scrivere e guarda l'anteprima!"
+                ></textarea>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>👁️ Anteprima</h2>
+                </div>
+                <div id="preview" class="preview"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💾 Auto-salvataggio attivo | I tuoi dati sono salvati nel browser</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

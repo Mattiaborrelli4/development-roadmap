@@ -1,0 +1,44 @@
+# Configurazione Echo Daemon - Windows
+# =====================================
+# File di configurazione ottimizzato per Windows
+
+# Porta TCP per il server echo
+port: 8888
+
+# Porta UDP per il server echo
+udp_port: 8889
+
+# Numero massimo di client concorrenti
+max_clients: 10
+
+# Path del file di log (Windows path)
+log_file: ./logs/echo-daemon.log
+
+# Path del file PID (Windows path)
+pid_file: ./echo-daemon.pid
+
+# Livello di logging
+log_level: INFO
+
+# Dimensione massima file log (in bytes)
+max_log_size: 10485760
+
+# Numero di backup log files
+log_backup_count: 5
+
+# Buffer size per I/O socket
+buffer_size: 4096
+
+# Timeout per inattivita client (in secondi)
+client_timeout: 300
+
+# Host di bind
+bind_host: "127.0.0.1"
+
+# Modalita daemon (Windows non supporta vera daemonizzazione)
+daemonize: false
+
+# Nota: Su Windows:
+# - daemonize deve essere false (nessun fork)
+# - Usa path relativi (./) invece di /var/
+# - Esegui in foreground con python echo_daemon.py start

@@ -1,0 +1,25 @@
+# File compilati
+file_manager
+*.o
+*.exe
+*.out
+
+# File di backup
+*~
+*.bak
+*.backup
+
+# File temporanei
+*.tmp
+.DS_Store
+Thumbs.db
+
+# File di test creati
+test_*.txt
+copy_*.txt
+moved_*.txt
+new_*.txt
+backup_*
+
+# Cartelle
+*.dSYM/

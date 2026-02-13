@@ -1,0 +1,278 @@
+# Database Structure - Sistema Gestione Inventario
+
+## ER Diagram (Entity Relationship)
+
+┌─────────────────────┐
+│    CATEGORIES       │
+├─────────────────────┤
+│ id (PK)            │
+│ name               │
+│ description        │
+│ created_at         │
+│ updated_at         │
+└─────────┬───────────┘
+          │
+          │ 1:N
+          │
+          ▼
+    ┌─────────────────────┐
+    │     PRODUCTS       │
+    ├─────────────────────┤
+    │ id (PK)            │◄──────────┐
+    │ name               │           │
+    │ sku                │           │
+    │ category_id (FK)    │           │
+    │ supplier_id (FK)    │           │
+    │ cost_price         │           │
+    │ sell_price         │           │
+    │ current_stock      │           │
+    │ min_stock          │           │
+    │ max_stock          │           │
+    │ reorder_point      │           │
+    │ is_active          │           │
+    │ created_at         │           │
+    │ updated_at         │           │
+    └─────┬───────────────┘           │
+          │                           │
+          │                           │
+          │ 1:N                       │
+          │                           │
+    ┌─────▼───────────┐         ┌─────┴───────┐
+    │  SALE_ITEMS     │         │STOCK_MOVEMENTS│
+    ├─────────────────┤         ├───────────────┤
+    │ id (PK)        │         │ id (PK)       │
+    │ sale_id (FK)   │         │ product_id(FK)│
+    │ product_id(FK) │         │ movement_type │
+    │ quantity       │         │ quantity      │
+    │ unit_price     │         │ reference_id  │
+    │ subtotal       │         │ movement_date │
+    └───────┬─────────         │ notes         │
+            │                   └───────────────┘
+            │
+            │ N:1
+            │
+    ┌───────▼──────────┐
+    │     SALES       │
+    ├─────────────────┤
+    │ id (PK)        │
+    │ sale_date      │
+    │ customer_name  │
+    │ total_amount   │
+    │ payment_method │
+    │ status         │
+    │ notes         │
+    └─────────────────┘
+
+
+┌─────────────────────┐
+│    SUPPLIERS       │
+├─────────────────────┤
+│ id (PK)            │
+│ name               │
+│ contact_person     │
+│ email              │
+│ phone              │
+│ address            │
+│ created_at         │
+│ updated_at         │
+└─────────┬───────────┘
+          │
+          │ 1:N
+          │
+          ▼
+    ┌─────────────────────┐
+    │   PURCHASE_ORDERS  │
+    ├─────────────────────┤
+    │ id (PK)            │◄──────────┐
+    │ supplier_id (FK)   │           │
+    │ order_date         │           │
+    │ expected_date      │           │
+    │ status             │           │
+    │ total_cost         │           │
+    │ notes              │           │
+    └─────┬───────────────┘           │
+          │                           │
+          │                           │
+          │ 1:N                       │
+          │                           │
+    ┌─────▼───────────┐         ┌─────┴────────┐
+    │ PURCHASE_ITEMS   │         │    PRODUCTS   │
+    ├─────────────────┤         │  (shown above) │
+    │ id (PK)        │         └────────────────┘
+    │ order_id (FK)  │
+    │ product_id (FK) │
+    │ quantity       │
+    │ unit_cost      │
+    └─────────────────┘
+
+## Relationships Summary
+
+### Categories (1) ── (N) Products
+- Una categoria può avere molti prodotti
+- Ogni prodotto appartiene a una categoria (opzionale)
+
+### Suppliers (1) ── (N) Products
+- Un fornitore può fornire molti prodotti
+- Ogni prodotto ha un fornitore principale (opzionale)
+
+### Suppliers (1) ── (N) Purchase_Orders
+- Un fornitore può avere molti ordini di acquisto
+- Ogni ordine appartiene a un fornitore
+
+### Purchase_Orders (1) ── (N) Purchase_Items
+- Un ordine può avere molti items
+- Ogni item appartiene a un ordine
+
+### Products (1) ── (N) Sale_Items
+- Un prodotto può essere venduto molte volte
+- Ogni item di vendita si riferisce a un prodotto
+
+### Sales (1) ── (N) Sale_Items
+- Una vendita può avere molti items
+- Ogni item appartiene a una vendita
+
+### Products (1) ── (N) Stock_Movements
+- Un prodotto può avere molti movimenti di stock
+- Ogni movimento si riferisce a un prodotto
+
+## Constraints
+
+### Primary Keys (PK)
+- Tutte le tabelle hanno `id SERIAL PRIMARY KEY`
+
+### Foreign Keys (FK)
+- products.category_id → categories.id (ON DELETE SET NULL)
+- products.supplier_id → suppliers.id (ON DELETE SET NULL)
+- sale_items.sale_id → sales.id (ON DELETE CASCADE)
+- sale_items.product_id → products.id
+- purchase_orders.supplier_id → suppliers.id
+- purchase_items.order_id → purchase_orders.id (ON DELETE CASCADE)
+- purchase_items.product_id → products.id
+- stock_movements.product_id → products.id
+
+### Check Constraints
+- products.cost_price > 0
+- products.sell_price > 0
+- products.current_stock >= 0
+- products.max_stock > min_stock
+- products.reorder_point >= min_stock
+- sale_items.quantity > 0
+- purchase_items.quantity > 0
+- stock_movements.quantity != 0
+- suppliers.email format validation
+- sales.payment_method IN ('CASH', 'CREDIT_CARD', 'DEBIT_CARD', 'BANK_TRANSFER', 'PAYPAL')
+- purchase_orders.status IN ('PENDING', 'ORDERED', 'RECEIVED', 'CANCELLED')
+- stock_movements.movement_type IN ('IN', 'OUT', 'ADJUSTMENT', 'TRANSFER', 'RETURN', 'DAMAGE')
+
+### Unique Constraints
+- products.sku
+- categories.name
+
+## Indexes
+
+### Products Table
+- idx_products_sku ON (sku)
+- idx_products_category ON (category_id)
+- idx_products_supplier ON (supplier_id)
+- idx_products_stock ON (current_stock)
+- idx_products_active ON (is_active)
+
+### Sales Table
+- idx_sales_date ON (sale_date)
+- idx_sales_customer ON (customer_name)
+- idx_sales_status ON (status)
+
+### Sale_Items Table
+- idx_sale_items_sale ON (sale_id)
+- idx_sale_items_product ON (product_id)
+
+### Purchase_Orders Table
+- idx_purchase_orders_supplier ON (supplier_id)
+- idx_purchase_orders_date ON (order_date)
+- idx_purchase_orders_status ON (status)
+
+### Purchase_Items Table
+- idx_purchase_items_order ON (order_id)
+- idx_purchase_items_product ON (product_id)
+
+### Stock_Movements Table
+- idx_stock_movements_product ON (product_id)
+- idx_stock_movements_type ON (movement_type)
+- idx_stock_movements_date ON (movement_date)
+- idx_stock_movements_reference ON (reference_id)
+
+## Triggers
+
+1. **update_categories_updated_at**
+   - Table: categories
+   - Event: BEFORE UPDATE
+   - Action: Aggiorna updated_at
+
+2. **update_suppliers_updated_at**
+   - Table: suppliers
+   - Event: BEFORE UPDATE
+   - Action: Aggiorna updated_at
+
+3. **update_products_updated_at**
+   - Table: products
+   - Event: BEFORE UPDATE
+   - Action: Aggiorna updated_at
+
+4. **update_purchase_order_total**
+   - Table: purchase_items
+   - Event: AFTER INSERT/UPDATE/DELETE
+   - Action: Ricalcola totale ordine
+
+5. **auto_update_sale_total**
+   - Table: sale_items
+   - Event: AFTER INSERT/UPDATE/DELETE
+   - Action: Ricalcola totale vendita
+
+## Data Flow
+
+### Sales Process
+1. Create sale record → INSERT INTO sales
+2. Add sale items → INSERT INTO sale_items
+3. Update product stock → UPDATE products SET current_stock = current_stock - quantity
+4. Record stock movement → INSERT INTO stock_movements (movement_type = 'OUT')
+
+### Purchase Process
+1. Create purchase order → INSERT INTO purchase_orders
+2. Add purchase items → INSERT INTO purchase_items
+3. Receive order → UPDATE purchase_orders SET status = 'RECEIVED'
+4. Update product stock → UPDATE products SET current_stock = current_stock + quantity
+5. Record stock movement → INSERT INTO stock_movements (movement_type = 'IN')
+
+### Stock Adjustment
+1. Manual adjustment → INSERT INTO stock_movements (movement_type = 'ADJUSTMENT')
+2. Update stock → UPDATE products SET current_stock = ...
+3. Return → INSERT INTO stock_movements (movement_type = 'RETURN')
+4. Damage → INSERT INTO stock_movements (movement_type = 'DAMAGE')
+
+## Views Dependencies
+
+### Core Views
+- v_product_summary → products, categories, suppliers
+- v_supplier_performance → suppliers, purchase_orders, purchase_items, products
+- v_monthly_sales → sales, sale_items
+- v_low_stock → products, categories
+
+### Extended Views
+- v_product_sales_summary → products, categories, sales, sale_items
+- v_daily_sales_report → sales, sale_items
+- v_category_performance → categories, products, sale_items, sales
+- v_inventory_valuation → categories, products
+- v_reorder_recommendations → products, categories, suppliers, sale_items, sales
+
+## Statistics Tables
+
+| Table | Estimated Rows |
+|-------|---------------|
+| categories | 12 |
+| suppliers | 9 |
+| products | 50 |
+| sales | 100+ |
+| sale_items | 150+ |
+| purchase_orders | 21 |
+| purchase_items | 30+ |
+| stock_movements | 250+ |
