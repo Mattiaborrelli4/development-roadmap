@@ -1,172 +1,140 @@
-# 🚀 Project Ideas Portfolio - Roadmap Completa
-**Creato per Mattia Borrelli - Frontend Developer in Growth**
+# 🚀 Software Development Roadmap & Project Ideas
+
+A comprehensive collection of project ideas, learning resources, and development roadmap organized by technology stack and skill level.
 
 ---
 
-## 📊 **Skill Assessment Attuale**
+## 📊 Technology Coverage
 
-### 🟢 **FORTE (70-80%)**
-- ☕ **Java**: 80% - Spring manca
-- 🗄️ **SQL**: 76% - Ottimo livello
-- 🔧 **C**: 72% - Buone basi
-- 🎨 **CSS**: 72% - Manca Flexbox
-- 🐘 **PostgreSQL**: 71% - Solido
-- ➕ **C++**: 68% - Manca moderno C++
+This repository covers 10 major technology areas with detailed project ideas, implementation guidelines, and learning resources:
 
-### 🟡 **MEDIO (42-65%)**
-- 📄 **HTML**: 65% - Manca semantico
-- 👥 **Collaboration**: 62%
-- ♿ **Accessibility**: 58%
-- 📦 **npm**: 48%
-- 🔒 **Security**: 48%
-- 📂 **Git**: 45%
-- ⚡ **Performance**: 45%
-- 🏗️ **Maven**: 42%
-- 🟨 **JavaScript**: 42% ⚠️ **CRITICO**
-
-### 🔴 **DEBOLE (<40%)**
-- 🟢 **Node.js**: 38%
-- 🔨 **CMake**: 32%
-- 💙 **TypeScript**: 28%
-- 📦 **pnpm**: 25%
-- 🐍 **Python**: 22%
+| Area | Focus | Level |
+|------|-------|--------|
+| ☕ **Java** | Enterprise, Spring Boot | Advanced |
+| 🔧 **C** | Systems Programming | Advanced |
+| ➕ **C++** | Modern C++17/20 | Intermediate |
+| 🐍 **Python** | Scripting, ML, Automation | Beginner |
+| 🟨 **JavaScript** | ES6+, React, Node.js | Intermediate |
+| 🌐 **Web Development** | Full-Stack, DevOps | All Levels |
+| 🗄️ **Database** | SQL, PostgreSQL, NoSQL | Intermediate |
+| 📱 **Mobile** | React Native, Flutter | Intermediate |
+| 🔒 **Security** | OWASP, Ethical Hacking | Beginner |
+| ⚙️ **System Programming** | OS, Kernel, Networking | Advanced |
 
 ---
 
-## 🎯 **PRIORITÀ ASSOLUTE**
-
-### 1. 🟨 **JavaScript ES6+** (42% → 70%)
-**PERCHÉ**: Fondamentale per frontend moderno
-**TEMPO**: 2-3 settimane intensive
-**RISORSA**: JavaScript.info + freeCodeCamp
-
-### 2. 💙 **TypeScript** (28% → 60%)
-**PERCHÉ**: Standard industriale per React/Vue
-**TEMPO**: 2 settimane dopo JS
-**RISORSA**: TypeScript Handbook
-
-### 3. 🟢 **Node.js** (38% → 60%)
-**PERCHÉ**: Backend per progetti full-stack
-**TEMPO**: 2-3 settimane
-**RISORSA**: Node.js docs + Express tutorial
-
-### 4. 🐍 **Python** (22% → 50%)
-**PERCHÉ**: ML, AI, scripting, versatile
-**TEMPO**: 3-4 settimane
-**RISORSA**: Python.org + Automate the Boring Stuff
-
----
-
-## 📁 **Struttura Cartelle**
+## 📁 Repository Structure
 
 ```
-Project Ideas Portfolio/
-├── 01-Java-Projects/          ← 80% - Espandi con Spring
-├── 02-C-Projects/             ← 72% - Systems programming
-├── 03-Cpp-Projects/           ← 68% - Moderno C++17/20
-├── 04-Python-Projects/        ← 22% - DA RIVISTARE!
-├── 05-JavaScript-Projects/    ← 42% - PRIORITÀ #1!
-├── 06-Web-Development/        ← HTML/CSS/React
-├── 07-Database-Projects/      ← SQL/PostgreSQL
-├── 08-Mobile-Projects/        ← React Native/Flutter
-├── 09-Security-Projects/      ← OWASP, cybersecurity
-└── 10-System-Programming/     ← OS, networking
+development-roadmap/
+├── 01-Java-Projects/          # Enterprise Java, Spring Boot
+├── 02-C-Projects/             # Systems programming, embedded
+├── 03-Cpp-Projects/           # Modern C++17/20 features
+├── 04-Python-Projects/        # Automation, scripting, ML
+├── 05-JavaScript-Projects/    # ES6+, Node.js, APIs
+├── 06-Web-Development/        # React, Full-Stack
+├── 07-Database-Projects/      # SQL, PostgreSQL design
+├── 08-Mobile-Projects/        # Cross-platform apps
+├── 09-Security-Projects/      # Security audits, penetration testing
+├── 10-System-Programming/     # OS, kernel, networking
+├── CHECKLIST.md               # Daily progress tracker
+└── README.md                  # This file
 ```
 
 ---
 
-## 🗓️ **Roadmap 6 Mesi**
+## 🗓️ 6-Month Development Plan
 
-### **MESE 1: JavaScript Mastery** 🔴
-- **Settimana 1-2**: ES6+ crash course
-- **Settimana 3**: Progetti vanilla JS (2-3)
-- **Settimana 4**: Fetch API, async/await
-- **Obiettivo**: JS 42% → 65%
+### **Month 1: JavaScript Mastery**
+- **Week 1-2**: ES6+ fundamentals (let/const, arrows, destructuring)
+- **Week 3**: Array methods (map, filter, reduce) and DOM manipulation
+- **Week 4**: Async/await, fetch API, promises
 
-### **MESE 2: React + TypeScript** 🟨
-- **Settimana 1-2**: React fundamentals
-- **Settimana 3**: TypeScript basics
-- **Settimana 4**: Progetto React + TS
-- **Obiettivo**: React base, TS 28% → 50%
+### **Month 2: React + TypeScript**
+- **Week 1-2**: React fundamentals (components, hooks, state)
+- **Week 3**: TypeScript basics (types, interfaces, generics)
+- **Week 4**: Build a React + TypeScript project
 
-### **MESE 3: Backend Node.js** 🟢
-- **Settimana 1-2**: Node.js + Express
-- **Settimana 3**: REST APIs + PostgreSQL
-- **Settimana 4**: Authentication
-- **Obiettivo**: Node 38% → 60%
+### **Month 3: Backend Development**
+- **Week 1-2**: Node.js + Express REST APIs
+- **Week 3**: Database integration (PostgreSQL)
+- **Week 4**: Authentication & security best practices
 
-### **MESE 4: Full-Stack Project** 🌐
-- **Progetto completo**: MERN/PERN stack
-- Frontend + Backend + Database
-- Deploy su cloud (Vercel/Railway)
-- **Obiettivo**: Portfolio project MASSIMO
+### **Month 4: Full-Stack Project**
+- Design and implement a complete MERN/PERN stack application
+- Deploy to cloud platforms (Vercel, Railway, AWS)
+- Implement CI/CD pipeline
 
-### **MESE 5: Java Spring** ☕
-- **Settimana 1-2**: Spring Boot basics
-- **Settimana 3**: Spring Security
-- **Settimana 4**: REST APIs Spring
-- **Obiettivo**: Java 80% → 90%
+### **Month 5: Enterprise Java**
+- **Week 1-2**: Spring Boot fundamentals
+- **Week 3**: Spring Security & JWT
+- **Week 4**: Build enterprise REST APIs
 
-### **MESE 6: Python + Security** 🐍
-- **Settimana 1-2**: Python basics
-- **Settimana 3**: Scripting utile
-- **Settimana 4**: Security basics
-- **Obiettivo**: Python 22% → 50%
+### **Month 6: Python + Security**
+- **Week 1-2**: Python fundamentals
+- **Week 3**: Automation scripts & web scraping
+- **Week 4**: Security basics (OWASP Top 10)
 
 ---
 
-## 🏆 **Progetti Portfolio MUST-HAVE**
+## 🏆 Featured Project Categories
 
-### **Entro 6 mesi devi avere:**
+Each technology folder contains:
 
-1. ✅ **SwapUnina 2.0** - Già fatto! Migliora
-2. ✅ **Face Recognition** - Già fatto!
-3. 🎯 **React Web App** - Dashboard/e-commerce
-4. 🎯 **Full-Stack Project** - MERN/PERN
-5. 🎯 **Spring Boot REST API** - Enterprise Java
-6. 🎯 **Open Source Contribution** - GitHub
-
----
-
-## 📚 **Risorse Generali**
-
-### Learning Platforms
-- **freeCodeCamp** - Gratuito, completo
-- **The Odin Project** - Full-stack gratuito
-- **Coursera** - University courses
-- **Udemy** - Corsi specifici
-
-### Practice
-- **LeetCode** - Algorithms
-- **HackerRank** - Challenges
-- **Frontend Mentor** - Frontend challenges
-- **DevChallenges** - Full projects
-
-### YouTube Channels
-- **Fireship** - Quick modern tutorials
-- **Traversy Media** - Practical projects
-- **The Net Ninja** - Complete courses
+- ✅ **Beginner Projects** - Build foundational skills
+- ✅ **Intermediate Projects** - Real-world applications
+- ✅ **Advanced Projects** - Complex systems design
+- ✅ **Crash Courses** - Quick reference guides
+- ✅ **Resource Lists** - Learning materials
+- ✅ **Time Estimates** - Realistic completion timelines
 
 ---
 
-## 💼 **Per il Lavoro**
+## 📚 Learning Resources
 
-**Quello che serve a un'azienda:**
+### **Platforms**
+- [freeCodeCamp](https://freecodecamp.org) - Free, comprehensive courses
+- [The Odin Project](https://www.theodinproject.com) - Full-stack curriculum
+- [Coursera](https://www.coursera.org) - University-level courses
+- [Udemy](https://www.udemy.com) - Specialized technical courses
 
-1. **GitHub attivo** - Contributi regolari
-2. **Portfolio online** - Sito personale aggiornato
-3. **LinkedIn** - Progetti evidenziati
-4. **Certificazioni** - Cloud, security
-5. **Soft skills** - Teamwork, communication
+### **Practice**
+- [LeetCode](https://leetcode.com) - Algorithm challenges
+- [HackerRank](https://www.hackerrank.com) - Coding competitions
+- [Frontend Mentor](https://www.frontendmentor.io) - Real-world frontend challenges
+- [DevChallenges](https://devchallenges.io) - Complete project tracks
+
+### **Documentation**
+- [MDN Web Docs](https://developer.mozilla.org) - Web standards reference
+- [Official Language Docs](https://devdocs.io) - Multiple language documentation
+- [OWASP](https://owasp.org) - Security best practices
 
 ---
 
-## 🎯 **Obiettivi Misurabili**
+## 💼 Professional Development
 
-**Tra 6 mesi:**
+### **Key Metrics to Track**
+- Consistent GitHub contributions (green graph)
+- Public repositories (20+ recommended)
+- Completed projects with documentation
+- Code review participation
+- Open source contributions
 
-| Skill | Ora | Target | Progetti |
-|-------|-----|--------|----------|
+### **Skills to Develop**
+- Technical writing (README, documentation)
+- Code review best practices
+- Git workflow mastery
+- CI/CD pipeline setup
+- Testing strategies (unit, integration, E2E)
+
+---
+
+## 🎯 Measurable Goals
+
+**6-Month Targets:**
+
+| Technology | Current | Target | Projects |
+|------------|----------|---------|----------|
 | JavaScript | 42% | 75% | 5+ |
 | TypeScript | 28% | 60% | 2+ |
 | Node.js | 38% | 65% | 3+ |
@@ -174,22 +142,77 @@ Project Ideas Portfolio/
 | Java | 80% | 90% | 2+ Spring |
 | React | 0% | 70% | 3+ |
 
-**GitHub**: 20+ repositories pubblici
-**Portfolio**: 5+ progetti dimostrabili
+**Repository Goals:**
+- 20+ public repositories
+- 5+ demonstrable projects
+- Active contribution graph
+- Quality documentation
 
 ---
 
-## 🚀 **Start NOW!**
+## 🚀 Getting Started
 
-**Inizia oggi stesso:**
-1. Apri `06-Web-Development/README.md`
-2. Fai il JavaScript crash course
-3. Costruisci il Pomodoro Timer
-4. Pusha su GitHub
-
-**Il miglior momento per iniziare era ieri. Il secondo è ORA.** 🔥
+1. **Choose your focus area** based on current skill level
+2. **Navigate to the specific folder** in this repository
+3. **Read the README** for detailed project ideas
+4. **Follow the crash course** for quick learning
+5. **Build projects** following the suggested order
+6. **Push to GitHub** and document your progress
 
 ---
 
-*Created with ❤️ by Claude - Team Leader Agent*
-*Last Updated: Febbraio 2026*
+## 📋 Daily Checklist
+
+Use the `CHECKLIST.md` file to track daily progress:
+
+- ✅ Coding practice (1+ hours)
+- ✅ Project work (1+ hours)
+- ✅ Documentation updates
+- ✅ Git commits
+- ✅ Code review
+
+---
+
+## 🔗 Folder Navigation
+
+Click on any folder below to explore project ideas:
+
+- [**01-Java-Projects**](./01-Java-Projects/) - Enterprise applications with Spring Boot
+- [**02-C-Projects**](./02-C-Projects/) - Systems programming and embedded
+- [**03-Cpp-Projects**](./03-Cpp-Projects/) - Modern C++ features and paradigms
+- [**04-Python-Projects**](./04-Python-Projects/) - Scripting, automation, and ML
+- [**05-JavaScript-Projects**](./05-JavaScript-Projects/) - ES6+ and modern JavaScript
+- [**06-Web-Development**](./06-Web-Development/) - Full-stack web applications
+- [**07-Database-Projects**](./07-Database-Projects/) - Database design and optimization
+- [**08-Mobile-Projects**](./08-Mobile-Projects/) - Cross-platform mobile development
+- [**09-Security-Projects**](./09-Security-Projects/) - Security testing and defense
+- [**10-System-Programming**](./10-System-Programming/) - OS internals and low-level coding
+
+---
+
+## 📝 Contributing
+
+This is a personal development roadmap repository. Feel free to:
+
+- Fork and adapt for your own learning journey
+- Suggest improvements via issues
+- Share your own project ideas
+
+---
+
+## 📄 License
+
+This repository is for educational purposes. All code examples and project ideas are provided as-is for learning and skill development.
+
+---
+
+## 🔥 Start Building
+
+**The best time to start was yesterday. The second best time is NOW.**
+
+Pick a technology area, read the project ideas, and start building today!
+
+---
+
+*Last Updated: February 2026*
+*Organized by Technology Stack & Skill Level*
